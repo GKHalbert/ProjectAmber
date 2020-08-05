@@ -13,8 +13,8 @@ router.get('/', function (req, res) {
     let endNum;
 
     if (page > 0) {
-        startNum = page * limit - limit;
-        endNum = page * limit;
+        startNum = limit * page - limit;
+        endNum = startNum + limit;
 
     }
     else {
@@ -48,6 +48,91 @@ router.get('/', function (req, res) {
             }
             else {
                 res.json({ message: 'Cannot found products' })
+            }
+        }
+        ).catch(err => console.log(err));
+});
+
+/* GET A SINGLE PRODUCT*/
+router.get('/:prodid', function (req, res) {
+
+    database.table('products as p')
+    .filter({ 'p.id' : req.params.prodid })
+    .join([{
+        table: 'categories as c',
+        on: 'p.cat_id = c.id'
+    }
+    ])
+    .withFields([
+        'p.id',
+        'c.title as category',
+        'p.title as name',
+        'p.price',
+        'p.quantity',
+        'p.image',
+        'p.images'
+    ])
+    .get()
+    .then(product => {
+        if (product) {
+            res.status(200).json(product);
+        }
+        else {
+            res.json({ message: `Cannot found product with id ${req.params.prodid}` })
+        }
+    }
+    ).catch(err => console.log(err));
+
+})
+
+/* GET All PRODUCTS FROM ONE SPECIFIC CATEGORY*/
+router.get('/category/:catName', function (req, res) {
+
+    const catName = req.params.catName;
+
+    let page = (req.query.page != undefined && req.query.page != 0) ? req.query.page : 1; // current page number
+    const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : 10; //limit of items per page
+
+    let startNum;
+    let endNum;
+
+    if (page > 0) {
+        startNum = limit * page - limit;
+        endNum = startNum + limit;
+
+    }
+    else {
+        startNum = 0;
+        endNum = limit;
+    }
+
+    database.table('products as p')
+        .join([{
+            table: 'categories as c',
+            on: 'p.cat_id = c.id'
+        }
+        ])
+        .withFields([
+            'p.id',
+            'c.title as category',
+            'p.title as name',
+            'p.price',
+            'p.quantity',
+            'p.image'
+        ])
+        .filter({'c.title': catName})
+        .slice(startNum, endNum)
+        .sort({ id: 1 })
+        .getAll()
+        .then(products => {
+            if (products.length > 0) {
+                res.status(200).json({
+                    count: products.length,
+                    products: products
+                });
+            }
+            else {
+                res.json({ message: `Cannot found products in category ${catName}.` })
             }
         }
         ).catch(err => console.log(err));

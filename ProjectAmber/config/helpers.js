@@ -5,7 +5,8 @@ let conn = new Mysqli({
     post: 3306,
     user: 'Amber',
     passwd: '114514', 
-    db: 'store_db' 
+    db: 'store_db',
+    multipleStatements: true
 })
 
 let db = conn.emit(false, '')

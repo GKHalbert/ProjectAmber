@@ -12,4 +12,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  opened: boolean = false;
+
+  closeOnClickOutside: boolean = true;
+ 
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
+
+  
+
 }

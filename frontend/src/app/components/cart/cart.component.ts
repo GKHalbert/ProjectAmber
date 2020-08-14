@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService} from '../../services/cart.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  clickEventsubscription:Subscription;
+
+  constructor(private cartService: CartService) { 
+    this.clickEventsubscription= this.cartService.getClickEvent().subscribe(()=>{
+      this.openCart();
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  cartOpened: boolean = false;
+
+  closeOnClickOutside: boolean = true;
+
+ 
+  toggleCart() {
+    this.cartOpened = !this.cartOpened;
+  }
+
+  openCart() {
+    this.cartOpened = true;
   }
 
 }

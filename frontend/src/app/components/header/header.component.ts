@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService} from '../../services/cart.service'
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
  
   toggleSidebar() {
     this.opened = !this.opened;
+  }
+
+  openCart(){
+    this.cartService.sendClickEvent();
   }
 
   

@@ -1,10 +1,7 @@
-<!--header-->
-
-
-<!-- Container for sidebar(s) + page content -->
+<!--sidebar-->
 <ng-sidebar-container style="position:absolute">
  
-    <!-- A sidebar -->
+    <!-- sidebar content -->
     <ng-sidebar 
         [(opened)]="opened"
         [closeOnClickOutside]="closeOnClickOutside"
@@ -15,8 +12,13 @@
       </div>
     </ng-sidebar>
 
+    <!--/.sidebar content-->
+
 </ng-sidebar-container>
 
+<!--/.sidebar-->
+
+<!--main header-->
 <nav class="mb-1 navbar navbar-expand grey lighten-4 py-4">
 
     <!--Sidebar navigation-->
@@ -26,14 +28,16 @@
 
 
     <!--/. Sidebar navigation -->
+
+    <!--Logo-->
     <ul class="nav navbar-nav abs-center-x">
         <li class="nav-item"> 
             <a class="nav-link abs-center" href="#">Logo</a>
         </li>
     </ul>
-
+    <!--/.Logo-->
     
-
+    <!--Icons-->
     <ul class="navbar-nav  ml-auto nav-flex-icons">
         <li class="nav-item">
             <a class="nav-link waves-effect waves-light"
@@ -49,14 +53,20 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
+            <a class="nav-link waves-effect waves-light"
+            (click) = "openCart()"
+            >
                 <i class="fas fa-shopping-cart fa-lg mr-3" ></i>
             </a>
         </li>
     </ul> 
+    <!--/.Icons-->
 
 </nav>
 
+<!--/.main header-->
+
+<!--search bar-->
 <div class="" mdbCollapse #test="bs-collapse">
     <form class="input-group md-form form-sm active-cyan-2">
          
@@ -70,3 +80,5 @@
 
     </form>
   </div>
+
+  <!--/.search bar-->

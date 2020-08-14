@@ -1,1 +1,20 @@
-<p>cart works!</p>
+<!--Cart-->
+<ng-sidebar-container style="position:absolute;">
+ 
+    <!-- sidebar content -->
+    <ng-sidebar 
+        [(opened)]="cartOpened"
+        [closeOnClickOutside]="closeOnClickOutside"
+        [mode] = "'over'"
+        [position] = "'right'">
+    <mdb-icon fas icon="times" size="lg" (click)="toggleCart()"></mdb-icon>
+      <div ng-sidebar-content>
+       
+      </div>
+    </ng-sidebar>
+
+    <!--/.sidebar content-->
+
+</ng-sidebar-container>
+
+<!--/.Cart-->

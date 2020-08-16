@@ -114,7 +114,7 @@ router.post('/new', function (req, res) {
                             )
                         .then(newDetailId => {
                             database.query('start transaction; select * from `products` where id = ' + p.id  + ' for update; \
-                            update `products` set quantity = quantity - ' + inCart + ' where id = ' + p.id + '; commit;')
+                            update `products` set quantity = quantity - ' + inCart + ' where id = ' + p.id + ';')
                                 .then(result=> {}).catch(err => console.log(err));
                         }).catch(err => console.log(err));
                     
@@ -132,4 +132,12 @@ router.post('/new', function (req, res) {
 
     
 });
+
+// Fake Payment 
+router.post('/payment', (req, res) => {
+    setTimeout(() => {
+        res.status(200).json({success: true});
+    }, 3000)
+});
+
 module.exports = router;

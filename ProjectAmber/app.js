@@ -21,6 +21,13 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'POST'],
+    allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
+}));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,7 +38,6 @@ app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/products', products);
 app.use('/api/orders', orders);
-app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

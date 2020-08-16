@@ -70,7 +70,8 @@ router.get('/:prodid', function (req, res) {
         'p.price',
         'p.quantity',
         'p.image',
-        'p.images'
+        'p.images',
+        'p.description'
     ])
     .get()
     .then(product => {

@@ -5,9 +5,18 @@
     <ng-sidebar 
         [(opened)]="opened"
         [closeOnClickOutside]="closeOnClickOutside"
-        [mode] = "'over'">
+        [mode] = "'over'"
+        [autoFocus]="autofocus">
     <mdb-icon fas icon="times" size="lg" (click)="toggleSidebar()"></mdb-icon>
-      <div ng-sidebar-content>
+      
+    <div ng-sidebar-content class="mr-md-3 ml-md-3">
+
+        <h4 class="text-muted mt-5">
+            <a href="/" class="text-reset">HOME</a>
+        </h4>
+
+        <hr>
+
        
       </div>
     </ng-sidebar>

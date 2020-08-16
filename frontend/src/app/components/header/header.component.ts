@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
 
   opened: boolean = false;
 
+  autofocus : boolean = false;
+
   closeOnClickOutside: boolean = true;
  
   toggleSidebar() {

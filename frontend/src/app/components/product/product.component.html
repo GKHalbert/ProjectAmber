@@ -1,1 +1,41 @@
-<p>product works!</p>
+<div class="container-fluid mt-2 mt-md-5 mb-4">
+    <div class="row">
+        <div class="col-xl-3 col-lg-0 col-md-0"></div>
+        <div class="col-xl-4  col-lg-7 col-md-7">
+            <div *ngIf="thumbimages.length === 0 then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock><img class="d-block w-100" src={{product?.image}} alt="First slide"></ng-template>
+            <ng-template #elseBlock>
+                <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+                    <mdb-carousel-item *ngFor="let t of thumbimages">
+                        <img class="d-block w-100" [src]="t">
+                      </mdb-carousel-item>
+                </mdb-carousel>
+            </ng-template>
+            
+
+        </div>
+        <div class="col-xl-3 col-md-5">
+            <h2 class="mt-sm-2 mb-md-3"><strong>{{product?.name}}</strong></h2>
+            <h4 class="text-muted"><strong>${{product?.price}}</strong></h4>
+            <hr>
+            <div>
+                <p>{{product?.description}}</p>
+            </div>
+           
+            
+            <select class=" mt-md-3 browser-default custom-select">
+               
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            
+            <button mdbBtn class="mt-md-4 w-50" type="button" color="elegant" mdbWavesEffect>ADD TO CART</button>
+            
+
+        </div>
+    </div>
+    
+</div>

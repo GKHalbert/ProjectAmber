@@ -7,9 +7,10 @@
         [closeOnClickOutside]="closeOnClickOutside"
         [mode] = "'over'"
         [position] = "'right'">
-    <mdb-icon fas icon="times" size="lg" (click)="toggleCart()"></mdb-icon>
+    <h4 class="text-muted" style="display: inline;">CART</h4>    
+    <mdb-icon fas icon="times" size="lg" (click)="toggleCart()" style="float: right;"></mdb-icon>
+    <hr>
       <div ng-sidebar-content>
-       
       </div>
     </ng-sidebar>
 

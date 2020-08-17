@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService} from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 
@@ -10,28 +10,17 @@ import { Subscription } from 'rxjs';
 })
 export class CartComponent implements OnInit {
 
-  clickEventsubscription:Subscription;
+  @Output ('cartClosed') closeCart = new EventEmitter<boolean>();
 
   constructor(private cartService: CartService) { 
-    this.clickEventsubscription= this.cartService.getClickEvent().subscribe(()=>{
-      this.openCart();
-    })
+
   }
 
   ngOnInit(): void {
   }
 
-  cartOpened: boolean = false;
-
-  closeOnClickOutside: boolean = true;
-
- 
-  toggleCart() {
-    this.cartOpened = !this.cartOpened;
-  }
-
-  openCart() {
-    this.cartOpened = true;
+  closeCartCallBack(){
+    this.closeCart.emit(false)
   }
 
 }

@@ -1,93 +1,64 @@
-<!--sidebar-->
-<ng-sidebar-container style="position:absolute">
- 
-    <!-- sidebar content -->
-    <ng-sidebar 
-        [(opened)]="opened"
-        [closeOnClickOutside]="closeOnClickOutside"
-        [mode] = "'over'"
-        [autoFocus]="autofocus">
-    <mdb-icon fas icon="times" size="lg" (click)="toggleSidebar()"></mdb-icon>
-      
-    <div ng-sidebar-content class="mr-md-3 ml-md-3">
-
-        <h4 class="text-muted mt-5">
-            <a href="/" class="text-reset">HOME</a>
-        </h4>
-
-        <hr>
-
-       
-      </div>
-    </ng-sidebar>
-
-    <!--/.sidebar content-->
-
-</ng-sidebar-container>
-
-<!--/.sidebar-->
-
 <!--main header-->
-<nav class="mb-1 navbar navbar-expand grey lighten-4 py-4">
+<div class="sticky-top" style="z-index: 99999;">  
 
-    <!--Sidebar navigation-->
-    <div class="float-left">
-        <a (click)="toggleSidebar()" class="button-collapse"><mdb-icon fas icon="bars" size ="lg"></mdb-icon></a>
+    <nav class="navbar navbar-expand grey lighten-4 py-4">
+
+        <!--Sidebar navigation-->
+        <div class="float-left">
+            <a (click)="openMenuCallBack()" class="button-collapse"><mdb-icon fas icon="bars" size ="lg"></mdb-icon></a>
+        </div>
+        <!--/. Sidebar navigation -->
+
+        <!--Logo-->
+        <ul class="nav navbar-nav abs-center-x">
+            <li class="nav-item"> 
+                <a class="nav-link abs-center" href="#">Logo</a>
+            </li>
+        </ul>
+        <!--/.Logo-->
+        
+        <!--Icons-->
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light"
+                (click)="test.toggle()">
+                    <i class="fas fa-search fa-lg mr-3" ></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light">
+                    <i class="fas fa-user fa-lg mr-3"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light"
+                (click) = "openCartCallBack()"
+                >
+                    <i class="fas fa-shopping-cart fa-lg mr-3" ></i>
+                </a>
+            </li>
+        </ul> 
+        <!--/.Icons-->
+        
+
+    </nav>
+    <!--search bar-->
+    <div class="search-header" mdbCollapse #test="bs-collapse">
+        <form class="input-group md-form form-sm active-cyan-2">
+            
+            <input class="form-control form-control-lg ml-3" type="text" placeholder="SEARCH" style="width: 95%;"  aria-label="Search"
+            mdbInput>
+            
+            <div class="input-group-append mt-3 mr-sm-3 mr-lg-5">
+                <mdb-icon fas icon="search" aria-hidden="true" size="2x" ></mdb-icon>
+            </div>
+        
+
+        </form>
     </div>
 
-
-    <!--/. Sidebar navigation -->
-
-    <!--Logo-->
-    <ul class="nav navbar-nav abs-center-x">
-        <li class="nav-item"> 
-            <a class="nav-link abs-center" href="#">Logo</a>
-        </li>
-    </ul>
-    <!--/.Logo-->
-    
-    <!--Icons-->
-    <ul class="navbar-nav  ml-auto nav-flex-icons">
-        <li class="nav-item">
-            <a class="nav-link waves-effect waves-light"
-            (click)="test.toggle()">
-                <i class="fas fa-search fa-lg mr-3" ></i>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-                <i class="fas fa-user fa-lg mr-3"></i>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link waves-effect waves-light"
-            (click) = "openCart()"
-            >
-                <i class="fas fa-shopping-cart fa-lg mr-3" ></i>
-            </a>
-        </li>
-    </ul> 
-    <!--/.Icons-->
-
-</nav>
-
+    <!--/.search bar-->
+</div>
 <!--/.main header-->
-
-<!--search bar-->
-<div class="" mdbCollapse #test="bs-collapse">
-    <form class="input-group md-form form-sm active-cyan-2">
-         
-        <input class="form-control form-control-lg ml-3" type="text" placeholder="SEARCH" style="width: 95%;"  aria-label="Search"
-        mdbInput>
-        
-        <div class="input-group-append mt-3 mr-sm-3 mr-lg-5">
-            <mdb-icon fas icon="search" aria-hidden="true" size="2x" ></mdb-icon>
-        </div>
-       
-
-    </form>
-  </div>
-
-  <!--/.search bar-->

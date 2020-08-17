@@ -1,0 +1,36 @@
+<!-- Container for sidebar(s) + page content -->
+<ng-sidebar-container style="height: 100vh;">
+
+    <!-- Side Menu -->
+    <ng-sidebar 
+        [(opened)]="menuOpened"
+        [closeOnClickOutside]="closeOnClickOutside"
+        [mode] = "'over'"
+        [autoFocus]="autofocus">
+        <app-sidemenu (menuClosed) = "onToggleMenu($event)"></app-sidemenu>
+    </ng-sidebar>
+    <!--/.Side Menu -->
+
+    <!-- Shopping Cart -->
+    <ng-sidebar 
+        [(opened)]="cartOpened"
+        [closeOnClickOutside]="closeOnClickOutside"
+        [mode] = "'over'"
+        [position] = "'right'"
+        [animate] = "cartAnimate"
+        >   
+      <app-cart (cartClosed) = "onToggleCart($event)"></app-cart>
+    </ng-sidebar>
+    <!--/.Shopping Cart -->
+    
+
+
+    <!-- Page content -->
+    <div ng-sidebar-content>
+      <app-header (cartOpened) = "onToggleCart($event)" (menuOpened) = "onToggleMenu($event)"></app-header>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+    <!-- /.Shopping Cart -->
+
+  </ng-sidebar-container>

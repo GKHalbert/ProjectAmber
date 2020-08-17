@@ -5,16 +5,23 @@
 }
 
 
-::ng-deep aside {
-    background-color: #fff;
-    padding: 2em 1em;
-    width: 20%;
-  }
 
   input[type=text] {
     font-size: 35px;
 }
 
+
+
 .test div{
     display: inline-block
   }
+
+.search-header{
+  position: absolute;
+  background-color: white;
+  width: 100%;
+}
+
+ .header-wrapper{
+   position: relative;
+ }

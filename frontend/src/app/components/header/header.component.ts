@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService} from '../../services/cart.service'
 
 @Component({
@@ -8,23 +8,21 @@ import { CartService} from '../../services/cart.service'
 })
 export class HeaderComponent implements OnInit {
 
+  @Output ('cartOpened') openCart = new EventEmitter<boolean>();
+  @Output ('menuOpened') openMenu = new EventEmitter<boolean>();
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
 
-  opened: boolean = false;
-
-  autofocus : boolean = false;
-
-  closeOnClickOutside: boolean = true;
- 
-  toggleSidebar() {
-    this.opened = !this.opened;
+  openCartCallBack(){
+    
+    this.openCart.emit(true);
   }
 
-  openCart(){
-    this.cartService.sendClickEvent();
+  openMenuCallBack(){
+    this.openMenu.emit(true);
   }
 
   

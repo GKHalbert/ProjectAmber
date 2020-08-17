@@ -1,21 +1,11 @@
-<!--Cart-->
-<ng-sidebar-container style="position:absolute;">
- 
-    <!-- sidebar content -->
-    <ng-sidebar 
-        [(opened)]="cartOpened"
-        [closeOnClickOutside]="closeOnClickOutside"
-        [mode] = "'over'"
-        [position] = "'right'">
-    <h4 class="text-muted" style="display: inline;">CART</h4>    
-    <mdb-icon fas icon="times" size="lg" (click)="toggleCart()" style="float: right;"></mdb-icon>
-    <hr>
-      <div ng-sidebar-content>
-      </div>
-    </ng-sidebar>
+<!--Cart Header-->
+<div>
+  <h4 class="text-muted" style="display: inline;">CART</h4>    
+  <mdb-icon fas icon="times" size="lg" (click)="closeCartCallBack()" style="float: right;"></mdb-icon>
+  <hr>
+</div>
+<!--/.Cart Header-->
 
-    <!--/.sidebar content-->
+<!--Cart Content-->
 
-</ng-sidebar-container>
-
-<!--/.Cart-->
+<!--/.Cart Content-->

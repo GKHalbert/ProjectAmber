@@ -13,7 +13,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SidebarModule } from 'ng-sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import { CommonModule} from "@angular/common"
+import { CommonModule} from "@angular/common";
+import { ToplevelComponent } from './components/toplevel/toplevel.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CommonModule} from "@angular/common"
     CartComponent,
     CheckoutComponent,
     HomeComponent,
-    ProductComponent
+    ProductComponent,
+    ToplevelComponent,
+    SidemenuComponent
   ],
   imports: [
     BrowserModule,

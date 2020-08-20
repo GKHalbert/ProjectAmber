@@ -21,7 +21,7 @@ export class ToplevelComponent implements OnInit {
 
   cartAnimate: boolean = false;
 
-  closeOnClickOutside: boolean = true;
+  closeOnClickOutside: boolean = false;
 
   delayAnimation(){
     setTimeout(() => {

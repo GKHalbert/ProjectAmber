@@ -7,5 +7,44 @@
 <!--/.Cart Header-->
 
 <!--Cart Content-->
+<div *ngIf="cartData.data[0].numInCart === 0;" class="text-center my-5">
+  <h4>YOUR CART IS EMPTY</h4>
+  </div>
+<div *ngIf="cartData.data[0].numInCart !== 0" class="container-fluid">
+  <div *ngFor = "let p of cartData.data; let i=index">
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="p.product?.image" alt="thumbnail" class="img-thumbnail">
+      </div>
+      <div class="col-md-8">
+        <div><h5>{{p.product.name}}</h5></div>
+        <div class="input-group mb-3">
+          
+          <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+              <button mdbBtn  (click)="ChangeQuantity(i, false)"
+              color="primary" size="md" class="m-0 px-3 py-2" type="button" id="button-addon1"
+                mdbWavesEffect>-</button>
+            </div>
+
+            <input type="text" class="form-contro text-center" style="width: 15%;" placeholder="{{p.numInCart}}"
+              aria-describedby="button-addon1">
+
+              <div class="input-group-append">
+                <button mdbBtn (click)="ChangeQuantity(i, true)" color="primary" size="md" class="m-0 px-3 py-2" type="button" id="button-addon1"
+                  mdbWavesEffect>+</button>
+              </div>
+
+              <a (click)="RemoveFromCart(i)"><span class="input-group-text md-addon ml-md-3" id="material-addon2">Remove</span></a>  
+        </div>
+        
+       
+      </div>
+      <hr>    
+    </div>  
+  
+  </div>
+
+</div>
 
 <!--/.Cart Content-->

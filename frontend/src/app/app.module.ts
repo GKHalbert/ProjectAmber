@@ -15,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import { CommonModule} from "@angular/common";
 import { ToplevelComponent } from './components/toplevel/toplevel.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
     SidebarModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

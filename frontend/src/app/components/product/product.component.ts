@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService} from '../../services/product.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -9,12 +10,22 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
+  selectedOption: number = 1;
   id: Number;
   product;
   thumbimages: any[] = [];
 
+  options = [
+    { name: "1", value: 1 },
+    { name: "2", value: 2 },
+    { name: "3", value: 3 },
+    { name: "4", value: 4 },
+    { name: "5", value: 5 }
+  ]
+
   constructor(private productService: ProductService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -27,6 +38,10 @@ export class ProductComponent implements OnInit {
           }
         })
     })
+  }
+
+  AddToCart(){
+   this.cartService.AddProductToCart(this.id, this.selectedOption);    
   }
 
 }

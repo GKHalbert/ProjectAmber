@@ -23,16 +23,12 @@
             </div>
            
             
-            <select class=" mt-md-3 browser-default custom-select">
+            <select class=" mt-md-3 browser-default custom-select" [(ngModel)]="selectedOption">
                
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option *ngFor= "let o of options" [value] = "o.value">{{o.name}}</option>
               </select>
             
-            <button mdbBtn class="mt-md-4 w-50" type="button" color="elegant" mdbWavesEffect>ADD TO CART</button>
+            <button mdbBtn class="mt-md-4 w-50" (click)="AddToCart()"type="button" color="elegant" mdbWavesEffect>ADD TO CART</button>
             
 
         </div>

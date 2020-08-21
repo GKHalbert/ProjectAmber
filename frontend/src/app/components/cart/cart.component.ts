@@ -30,8 +30,8 @@ export class CartComponent implements OnInit {
 
   RemoveFromCart(index){
     this.cartService.DeleteProductFromCart(index);
-    console.log(this.cartData);
   }
+
 
   closeCartCallBack(){
     this.closeCart.emit(false)

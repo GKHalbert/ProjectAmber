@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject} from 'rxjs';
+import { Observable, Subject, BehaviorSubject, from} from 'rxjs';
 import { ProductService } from './product.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras} from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { CartModelPublic, CartModelServer} from "../models/cart.model";
+import { CartModelPublic, CartModelServer, OrderConfirmationResponse} from "../models/cart.model";
 import {ProductModelServer} from "../models/product.model";
 import { trigger } from '@angular/animations';
+import { OrderService} from "./order.service"
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,7 @@ export class CartService {
 
 
   constructor(private productService: ProductService,
+              private orderService: OrderService,
               private httpClient: HttpClient,
               private router: Router) { 
 
@@ -84,8 +86,9 @@ export class CartService {
     this.cartDataServer.data.forEach(p=>{
       let numInCart = p.numInCart;
       let price = p.product.price;
-      // @ts-ignore
-      total += numInCart * price;
+
+      total = Number((total+ numInCart.valueOf() * price.valueOf()).toFixed(2));
+      console.log(total)
     })
     this.cartDataServer.total = total;
     this.cartTotal$.next(this.cartDataServer.total);
@@ -197,6 +200,49 @@ export class CartService {
     }
   }
   private subject = new Subject<any>();
+
+  CheckoutFromCart(userId: Number){
+    this.httpClient.post(`${this.serverUrl}orders/payment`, null).subscribe((res: {success: Boolean})=> {
+      if (res.success){
+        let newOrder = {
+          userId: userId,
+          products: this.cartDataClient.prodData
+        }
+        this.httpClient.post(`${this.serverUrl}orders/new`, newOrder).toPromise().then((orderRes: OrderConfirmationResponse) => {
+         this.orderService.getOrderById(orderRes.order_id).then(prods => {
+           console.log(prods)
+           if (orderRes.success){
+             let navExtra: NavigationExtras = {state:{
+               message: orderRes.message,
+               orderId: orderRes.order_id,
+               products: prods,
+               total: this.cartDataServer.total
+             }};
+             this.clearCart();
+             //close spinner
+             this.router.navigate(['/order/compelete'], navExtra);
+
+           }
+         })
+        })
+      }
+    })
+  }
+
+  clearCart(){
+    this.cartDataServer = {
+      data: [{
+        product: undefined,
+        numInCart: 0
+      }],
+      total: 0
+    };
+
+    this.cartDataObs$.next({...this.cartDataServer});
+    this.cartDataClient = {prodData : [{incart: 0, id: 0}], total: 0};
+    localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
+
+  }
 
   sendClickEvent(){
     this.subject.next();

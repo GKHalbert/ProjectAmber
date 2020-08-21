@@ -17,6 +17,7 @@ import { CommonModule} from "@angular/common";
 import { ToplevelComponent } from './components/toplevel/toplevel.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { FormsModule } from '@angular/forms';
+import { OrdercompeleteComponent } from './components/ordercompelete/ordercompelete.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ProductComponent,
     ToplevelComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    OrdercompeleteComponent
   ],
   imports: [
     BrowserModule,

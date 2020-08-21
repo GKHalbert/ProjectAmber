@@ -15,3 +15,12 @@ export interface ProductModelServer {
     count: number;
     products: ProductModelServer[]
   };
+
+  export interface ProductResponseModel {
+    id: Number;
+    title: String;
+    description: String;
+    price: Number;
+    quantity: Number;
+    image: String;
+  }

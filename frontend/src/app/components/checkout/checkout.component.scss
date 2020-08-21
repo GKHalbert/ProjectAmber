@@ -1,0 +1,59 @@
+.input {
+    height: 40px;
+    padding: 0px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #E4E7ED;
+    background-color: #FFF;
+    width: 100%;
+  }
+
+  .section-title {
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+
+  .section-title .title {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 15px;
+    font-weight: bold;
+  }
+
+  textarea.input {
+    padding: 15px;
+    min-height: 120px;
+  }
+
+  .order-details {
+    position: relative;
+    padding: 0px 30px 30px;
+    border-right: 1px solid #E4E7ED;
+    border-left: 1px solid #E4E7ED;
+    border-bottom: 1px solid #E4E7ED;
+    border-top: 1px solid #E4E7ED;
+  }
+
+  .order-summary {
+    margin: 15px 0px;
+  }
+  
+  .order-summary .order-col {
+    display: table;
+    width: 100%;
+  }
+
+  .order-summary .order-col>div {
+    display: table-cell;
+    padding: 10px 0px;
+  }
+
+  .order-summary .order-col>div:first-child {
+    width: calc(100% - 150px);
+  }
+
+  .order-summary .order-col>div:last-child {
+    width: 150px;
+    text-align: right;
+  }  
+  

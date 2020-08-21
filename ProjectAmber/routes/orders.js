@@ -64,11 +64,11 @@ router.get('/:orderid', function (req, res) {
     ])
     .withFields([
         'o.id',
-        'p.title as product',
+        'p.title',
         'p.description as description',
         'p.price',
         'od.quantity',
-        'u.username'
+        'p.image'
     ])
     .filter({ 'o.id': orderid })
     .getAll()
@@ -97,6 +97,8 @@ router.post('/new', function (req, res) {
         database.table('orders')
             .insert({user_id: userId})
             .then(newOrderId =>{
+                let productIndex = 0;
+                let lastIndex = products.length - 1;
                 products.forEach(async p => {
                     let productStock = await database.table('products').filter({id: p.id}).withFields(['quantity']).get();
                     let inCart = parseInt(p.incart);
@@ -114,19 +116,28 @@ router.post('/new', function (req, res) {
                             )
                         .then(newDetailId => {
                             database.query('start transaction; select * from `products` where id = ' + p.id  + ' for update; \
-                            update `products` set quantity = quantity - ' + inCart + ' where id = ' + p.id + ';')
-                                .then(result=> {}).catch(err => console.log(err));
+                            update `products` set quantity = quantity - ' + inCart + ' where id = ' + p.id + ';commit;')
+                                .then(result=> {
+                                    if(productIndex == lastIndex){
+                                        res.json({
+                                            message: `Order successfully placed with order id ${newOrderId}`,
+                                            success: true,
+                                            order_id: newOrderId,
+                                            products: products
+                                        });                       
+
+                                    }
+                                    else{
+                                        productIndex++; 
+                                    }
+                                }).catch(err => console.log(err));
                         }).catch(err => console.log(err));
                     
-                }                          
+                }
+                
+               
                 );
 
-                res.json({
-                    message: `Order successfully placed with order id ${newOrderId}`,
-                    success: true,
-                    order_id: newOrderId,
-                    products: products
-                })
             }).catch(err => res.json(err));
     }
 

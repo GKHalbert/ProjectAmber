@@ -15,3 +15,13 @@ export interface CartModelPublic {
     incart: Number
   }]
 }
+
+export interface OrderConfirmationResponse {
+  order_id: Number;
+  success: Boolean;
+  message: String;
+  products: [{
+    id: String,
+    numInCart: String
+  }]
+}

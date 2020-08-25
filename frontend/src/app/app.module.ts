@@ -16,7 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CommonModule} from "@angular/common";
 import { ToplevelComponent } from './components/toplevel/toplevel.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { OrdercompeleteComponent } from './components/ordercompelete/ordercompelete.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -44,7 +44,8 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents:[LoginComponent],
   providers: [],

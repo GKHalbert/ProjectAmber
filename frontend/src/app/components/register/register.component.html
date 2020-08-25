@@ -3,45 +3,53 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <!-- Default form register -->
-            <form class="text-center border border-light mt-5 p-5">
-
+            
+            <form #registerForm= "ngForm" [ngFormOptions]="{updateOn: 'change'}" class="text-center border border-light mt-5 p-5">
+                
                 <p class="h4 mb-4">Sign up</p>
+
         
-                <div class="form-row mb-4">
+                <div class="md-form form-row mb-4">
                 <div class="col">
                     <!-- First name -->
-                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                    <input type="text" name="first" [(ngModel)]=" userData.fname" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
                 </div>
                 <div class="col">
                     <!-- Last name -->
-                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                    <input type="text" name="last" [(ngModel)]=" userData.lname" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                    
                 </div>
                 </div>
-        
+
+                <!-- Username -->
+                <div class="md-form">
+                    <input mdbInput mdbValidate type="text" name="username"[(ngModel)]=" userData.username" id="username" 
+                    class="form-control mb-4" placeholder="Username" #username="ngModel" required (change)="disErr()">
+                    <mdb-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <span *ngIf="username.errors.required">Username required</span>
+                        <span *ngIf="userErr">{{userErrMsg}}</span>
+                        
+                    </mdb-error>
+
+                </div>
                 <!-- E-mail -->
-                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
-        
-                <!-- Password -->
-                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                At least 8 characters and 1 digit
-                </small>
-        
-                <!-- Phone number -->
-                <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
-                <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                Optional - for two-step authentication
-                </small>
-        
-                <!-- Newsletter -->
-                <div class="row">
-                <div class="col-md-6 mx-auto d-flex justify-content-center">
-                    <mdb-checkbox [default]="true">Subscribe to our newsletter</mdb-checkbox>
+                <div class="md-form">
+                    <input mdbInput mdbValidate type="email" name="email"[(ngModel)]=" userData.email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail"  #email="ngModel" required pattern="[^ @]*@[^ @]*">                
+                    <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">Invalid email</mdb-error>
+                    
                 </div>
+                <!-- Password -->
+                <div class="md-form">
+                <input mdbInput mdbValidate type="password" name="password"[(ngModel)]=" userData.password"id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" #input="ngModel" required>
+                <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Password cannot be empty</mdb-error>
+                </div>
+                <!-- Phone number -->
+                <div class="md-form">
+                <input type="text" name="phone"[(ngModel)]=" userData.phone" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
                 </div>
         
                 <!-- Sign up button -->
-                <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+                <button type="submit" mdbBtn (click)="onSubmit(registerForm)" color="info" block="true" class="my-4" type="submit">Sign in</button>
         
                 <!-- Social register -->
                 <p>or sign up with:</p>
@@ -64,8 +72,7 @@
                 <!-- Terms of service -->
                 <p>By clicking
                 <em>Sign up</em> you agree to our
-                <a href="" target="_blank">terms of service</a></p>
-        
+                <a href="" target="_blank">terms of service</a></p>  
             </form>
       <!-- Default form register -->
         </div>

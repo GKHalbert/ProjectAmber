@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { userModelRes } from "../models/user.model"
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,15 @@ export class UserService {
   login(userData){
     return this.http.post(`${this.serverURL}users/login`, userData);
   }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  getUserInfo(){
+    return this.http.get<userModelRes>(`${this.serverURL}users/user`)
+  }
+
 
 }
 

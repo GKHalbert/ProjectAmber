@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           localStorage.setItem('token',res.token);
           this.modalRef.hide();
-          this.router.navigate([`/user/${username.value}`])
+          this.router.navigate([`/user`])
         },
         err =>{
           console.log(err);

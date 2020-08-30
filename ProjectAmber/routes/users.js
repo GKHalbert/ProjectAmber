@@ -8,15 +8,15 @@ const jwt = require('jsonwebtoken');
 const secretKey = 'secretKey';
 
 /* GET users listing. */
-/* router.get('/', function (req, res) {
+router.get('/', function (req, res) {
     res.send('respond with a resource');
-}); */
+});
 
 function verifyToken(req,res,next){
     if (!req.headers.authorization){
         return res.status(401).send("Unauthorized request");
     }
-    let token = req.headers.authorization;
+    let token = req.headers.authorization.split(' ')[1];
 
     if (token === 'null'){
         return res.status(401).send('Unauthorized request');
@@ -33,9 +33,8 @@ function verifyToken(req,res,next){
 }
 
 /* Get user information*/
-router.get('/', function (req, res) {
-    let username = req.body.username;
-    console.log(username);
+router.get('/user', verifyToken, function (req, res) {
+    let username = req.username;
     database.table('users')
     .leftJoin([
         {
@@ -54,7 +53,7 @@ router.get('/', function (req, res) {
     .filter({username:username})
     .getAll()
     .then(user => {
-        console.log(user)
+        
         if(user.length > 0){
             let orders = []
             user.forEach(element => {
@@ -65,8 +64,10 @@ router.get('/', function (req, res) {
             }
             res.status(200).json({
                                     username: user[0].username,
+                                    userId: user[0].userId,
                                     fname: user[0].fname,
                                     lname: user[0].lname,
+                                    email: user[0].email,
                                     orders: orders
                                 })
         }

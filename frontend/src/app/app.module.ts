@@ -12,7 +12,7 @@ import { ProductComponent } from './components/product/product.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SidebarModule } from 'ng-sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { CommonModule} from "@angular/common";
 import { ToplevelComponent } from './components/toplevel/toplevel.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
@@ -21,6 +21,7 @@ import { OrdercompeleteComponent } from './components/ordercompelete/ordercompel
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { TokenInterceptorService } from './services/token-interceptor.service'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,13 @@ import { UserComponent } from './components/user/user.component';
     ReactiveFormsModule
   ],
   entryComponents:[LoginComponent],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

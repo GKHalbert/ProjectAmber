@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'order/compelete', component: OrdercompeleteComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'user/:username', component: UserComponent}
+  { path: 'user', component: UserComponent}
 
 ];
 

@@ -20,6 +20,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { OrdercompeleteComponent } from './components/ordercompelete/ordercompelete.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RegisterComponent } from './components/register/register.component';
     SidemenuComponent,
     OrdercompeleteComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

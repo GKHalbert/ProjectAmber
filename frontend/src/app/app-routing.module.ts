@@ -6,6 +6,7 @@ import {CartComponent} from './components/cart/cart.component'
 import {CheckoutComponent} from './components/checkout/checkout.component'
 import {OrdercompeleteComponent} from './components/ordercompelete/ordercompelete.component'
 import {RegisterComponent} from './components/register/register.component'
+import { UserComponent } from './components/user/user.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'order/compelete', component: OrdercompeleteComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'user/:username', component: UserComponent}
 
 ];
 

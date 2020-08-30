@@ -21,7 +21,8 @@ import { OrdercompeleteComponent } from './components/ordercompelete/ordercompel
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
-import { TokenInterceptorService } from './services/token-interceptor.service'
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './auth.guard'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }
+  },
+  AuthGuard
 ],
   bootstrap: [AppComponent]
 })

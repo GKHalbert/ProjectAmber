@@ -2,8 +2,45 @@
 var express = require('express');
 var router = express.Router();
 const {database} = require('../config/helpers');
+const jwt = require('jsonwebtoken');
+
+const secretKey = 'secretKey';
+
+function verifyOrderToken(req,res,next){
+    if (!req.headers.authorization){
+        next();
+    }
+
+    let token = req.headers.authorization.split(' ')[1];
+
+    if (token === 'null'){
+        next();
+    }
+
+    let payload = jwt.verify(token, secretKey);
+
+    if(!payload){
+        next();
+    }
+
+    database.table('users')
+    .filter({username: payload.username})
+    .get()
+    .then(user => {
+        if (!user){
+            next();
+        }
+        else{
+            req.userId = user.id;
+            next();
+        }
+    }).catch(err => console.log(err));
 
 
+
+    
+
+}
 /* GET ALL orders */
 router.get('/', function (req, res) {
     database.table('order_details as od')
@@ -84,8 +121,9 @@ router.get('/:orderid', function (req, res) {
 });
 
 /*PLACE A NEW ORDER*/
-router.post('/new', function (req, res) {
-    let userId = req.body.userId;
+router.post('/new', verifyOrderToken, function (req, res) {
+    let userId = req.userId;
+    console.log(userId)
     console.log(req.body);
     let products = req.body.products;
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from '../../services/user.service'
 import { userModelRes } from '../../models/user.model'
+import { onErrorResumeNext } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +14,8 @@ export class UserComponent implements OnInit {
 
   userInfo;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getUserInfo()
@@ -21,6 +25,11 @@ export class UserComponent implements OnInit {
         console.log(this.userInfo);
       },
       err => {
+        if (err instanceof HttpErrorResponse){
+          if (err.status === 401){
+
+          }
+        }
 
       }
     )

@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder(){
-    this.cartService.CheckoutFromCart(1);
+    this.cartService.CheckoutFromCart();
   }
 
 }

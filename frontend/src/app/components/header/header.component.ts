@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService} from '../../services/cart.service'
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { LoginComponent} from '../login/login.component'
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +18,22 @@ export class HeaderComponent implements OnInit {
   modalRef: MDBModalRef;
 
   constructor(private cartService: CartService,
-              private modalService: MDBModalService) { }
+              private modalService: MDBModalService,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  openModal(){
-    this.modalRef = this.modalService.show(LoginComponent);
+  userNav(){
+    if (this.userService.loggedIn()){
+      this.router.navigate(['/user'])
+    }
+    else{
+      this.userService.afterLogin = '/user'
+      this.modalRef = this.modalService.show(LoginComponent);
+    }
+    
   }
 
   openCartCallBack(){

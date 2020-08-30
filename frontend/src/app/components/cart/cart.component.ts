@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {CartModelServer} from "../../models/cart.model";
 import { CartService} from '../../services/cart.service';
 import { Subscription, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { LoginComponent} from '../login/login.component'
 
 
 @Component({
@@ -15,7 +19,12 @@ export class CartComponent implements OnInit {
 
   cartData: CartModelServer;
 
-  constructor(private cartService: CartService) { 
+  modalRef: MDBModalRef;
+
+  constructor(private cartService: CartService,
+              private userService: UserService,
+              private modalService: MDBModalService,
+              private router: Router) { 
 
   }
 
@@ -35,6 +44,18 @@ export class CartComponent implements OnInit {
 
   closeCartCallBack(){
     this.closeCart.emit(false)
+  }
+
+  toCheckout(){
+    if (this.userService.loggedIn()){
+      this.router.navigate(['/checkout'])
+    }
+    else{
+      this.userService.afterLogin = '/checkout';
+      this.modalRef = this.modalService.show(LoginComponent);
+
+    }
+
   }
 
 }

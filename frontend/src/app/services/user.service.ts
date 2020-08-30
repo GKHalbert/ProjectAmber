@@ -12,12 +12,18 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  afterLogin: String;
+
   register(userData){
     return this.http.post(`${this.serverURL}users/register`, userData);
   }
 
   login(userData){
     return this.http.post(`${this.serverURL}users/login`, userData);
+  }
+
+  loggedIn(){
+    return !!localStorage.getItem('token');
   }
 
   getToken(){

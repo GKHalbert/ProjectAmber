@@ -201,11 +201,10 @@ export class CartService {
   }
   private subject = new Subject<any>();
 
-  CheckoutFromCart(userId: Number){
+  CheckoutFromCart(){
     this.httpClient.post(`${this.serverUrl}orders/payment`, null).subscribe((res: {success: Boolean})=> {
       if (res.success){
         let newOrder = {
-          userId: userId,
           products: this.cartDataClient.prodData
         }
         this.httpClient.post(`${this.serverUrl}orders/new`, newOrder).toPromise().then((orderRes: OrderConfirmationResponse) => {

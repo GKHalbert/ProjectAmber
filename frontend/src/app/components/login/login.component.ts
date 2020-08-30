@@ -3,6 +3,7 @@ import { MDBModalRef } from 'angular-bootstrap-md';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router'
+import { onErrorResumeNext } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,11 @@ export class LoginComponent implements OnInit {
           console.log(res);
           localStorage.setItem('token',res.token);
           this.modalRef.hide();
-          this.router.navigate([`/user`])
+
+          if (this.userService.afterLogin){
+            this.router.navigate([this.userService.afterLogin]);
+          }
+          
         },
         err =>{
           console.log(err);

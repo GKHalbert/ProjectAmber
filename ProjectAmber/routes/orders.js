@@ -120,6 +120,48 @@ router.get('/:orderid', function (req, res) {
     ).catch(err => console.log(err));
 });
 
+/* GET AN ORDER WITH USERID */
+router.get('/user/:userid', function (req, res) {
+
+    const userid = req.params.userid;
+
+    database.table('order_details as od')
+    .join([{
+        table: 'orders as o',
+        on: 'od.order_id = o.id'
+    },
+    {
+        table: 'products as p',
+        on: 'od.product_id = p.id'
+    },
+    {
+        table: 'users as u',
+        on: 'o.user_id = u.id'
+    },
+
+    ])
+    .withFields([
+        'o.id as orderId',
+        'u.id as userId',
+        'p.title',
+        'p.description as description',
+        'p.price',
+        'od.quantity',
+        'p.image'
+    ])
+    .filter({ 'u.id': userid })
+    .getAll()
+    .then(orders => {
+        if (orders.length > 0) {
+            res.status(200).json(orders);
+        }
+        else {
+            res.json({ message: `Cannot found orders with id ${orderid}` });
+        }
+    }
+    ).catch(err => console.log(err));
+});
+
 /*PLACE A NEW ORDER*/
 router.post('/new', verifyOrderToken, function (req, res) {
     let userId = req.userId;

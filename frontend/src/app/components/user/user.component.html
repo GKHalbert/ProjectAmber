@@ -1,1 +1,40 @@
-<p>user works!</p>
+<div class="container mt-5">
+<mat-tab-group>
+    <mat-tab label="Orders">
+        <div *ngFor="let o of orders">
+        <mdb-card class="mt-md-2 ml-md-2 mr-md-2">
+            <mdb-card-header>ORDER: {{o[0].orderId}}
+                <span style="float: right">TOTAL: ${{orderTotal(o)}}</span>
+            </mdb-card-header>
+            <mdb-card-body>
+              <ul class="list-group list-group-flush">
+                    <li *ngFor="let item of o" class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img [src]="item.image" alt="thumbnail" class="img-thumbnail"
+                                style="width: 200px; height: auto;"
+                                >
+                            </div>
+
+                            <div class="col-md-8">
+                                <h5>{{item.title}}</h5>
+                                <p>$ {{item.price}} &times; {{item.quantity}}</p>
+                            </div>
+
+                        </div>
+                    </li>
+                   
+                </ul>
+            </mdb-card-body>
+          </mdb-card>
+        
+        </div>
+        
+    </mat-tab>
+    <mat-tab label="Account">
+        <button mdbBtn (click)="logout()" type="button" color="default" mdbWavesEffect>
+            Logout
+        </button>
+    </mat-tab>
+  </mat-tab-group>
+</div>

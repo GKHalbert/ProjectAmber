@@ -24,3 +24,13 @@ export interface ProductModelServer {
     quantity: Number;
     image: String;
   }
+
+  export interface OrderResponseModel {    
+    userId: Number;
+    orderId: Number;
+    title: String;
+    description: String;
+    price: Number;
+    quantity: Number;
+    image: String;
+  }

@@ -21,6 +21,11 @@ export class UserService {
   login(userData){
     return this.http.post(`${this.serverURL}users/login`, userData);
   }
+  
+  logout(){
+    localStorage.removeItem('token');
+    this.afterLogin = null;
+  }
 
   loggedIn(){
     return !!localStorage.getItem('token');

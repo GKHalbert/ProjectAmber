@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SidebarModule } from 'ng-sidebar';
+import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { CommonModule} from "@angular/common";
@@ -49,6 +50,7 @@ import { AuthGuard } from './auth.guard'
     HttpClientModule,
     CommonModule,
     FormsModule,
+    MatTabsModule,
     ReactiveFormsModule
   ],
   entryComponents:[LoginComponent],

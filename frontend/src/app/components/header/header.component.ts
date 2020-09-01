@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Testability } from '@angular/core';
 import { CartService} from '../../services/cart.service'
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { LoginComponent} from '../login/login.component'
@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   @Output ('menuOpened') openMenu = new EventEmitter<boolean>();
 
   modalRef: MDBModalRef;
+  
+  searchText = '';
 
   constructor(private cartService: CartService,
               private modalService: MDBModalService,
@@ -43,6 +45,10 @@ export class HeaderComponent implements OnInit {
 
   openMenuCallBack(){
     this.openMenu.emit(true);
+  }
+
+  search(){
+    this.router.navigate(['search/' + this.searchText])
   }
 
   

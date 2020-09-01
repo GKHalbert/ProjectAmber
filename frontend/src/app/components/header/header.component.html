@@ -48,13 +48,14 @@
     </nav>
     <!--search bar-->
     <div class="search-header" mdbCollapse #test="bs-collapse">
-        <form class="input-group md-form form-sm active-cyan-2">
+        <form (submit)="search()" (submit)="test.toggle()"  class="input-group md-form form-sm active-cyan-2">
             
-            <input class="form-control form-control-lg ml-3" type="text" placeholder="SEARCH" style="width: 95%;"  aria-label="Search"
+            <input [(ngModel)]="searchText" name="search" class="form-control form-control-lg ml-3" type="text" placeholder="SEARCH" style="width: 95%;"  aria-label="Search"
             mdbInput>
             
             <div class="input-group-append mt-3 mr-sm-3 mr-lg-5">
-                <mdb-icon fas icon="search" aria-hidden="true" size="2x" ></mdb-icon>
+                <mdb-icon (click)="search()" (click)="test.toggle()" 
+                fas icon="search" aria-hidden="true" size="2x" ></mdb-icon>
             </div>
         
 

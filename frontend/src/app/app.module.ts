@@ -23,7 +23,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from './auth.guard';
+import { ProductsComponent } from './components/products/products.component';
+import { SearchResultComponent } from './components/search-result/search-result.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AuthGuard } from './auth.guard'
     OrdercompeleteComponent,
     LoginComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    ProductsComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

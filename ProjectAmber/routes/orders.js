@@ -150,6 +150,7 @@ router.get('/user/:userid', function (req, res) {
         'p.image'
     ])
     .filter({ 'u.id': userid })
+    .sort({orderId: -1})
     .getAll()
     .then(orders => {
         if (orders.length > 0) {

@@ -86,6 +86,15 @@ router.get('/:prodid', function (req, res) {
 
 })
 
+/* GET All CATEGORY INFORMATION*/
+router.get('/categories/list', function (req, res) {
+    database.table('categories')
+    .getAll()
+    .then(cats => {
+        res.status(200).json(cats);
+    }).catch(err => console.log(err));
+});
+
 /* GET All PRODUCTS FROM ONE SPECIFIC CATEGORY*/
 router.get('/category/:catName', function (req, res) {
 

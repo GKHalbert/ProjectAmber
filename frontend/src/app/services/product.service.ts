@@ -25,4 +25,24 @@ export class ProductService {
     return this.http.get<ProductModelServer>(this.url + 'products/' + id);
   }
 
+  getProductByCat(cat: String, limitInput=10): Observable<serverResponse> {
+    return this.http.get<serverResponse>(this.url + 'products/category/' + cat,
+    {
+      params: {
+        limit: limitInput.toString()
+      }
+    });
+  }
+
+  getCategories(){
+    return this.http.get(this.url + 'products/categories/list');
+  }
+
+  productFilter(products: ProductModelServer[], keyword: String){
+    return products.filter(product =>{
+      return product.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase());
+    })
+
+  }
+
 }

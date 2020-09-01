@@ -8,16 +8,19 @@ import {OrdercompeleteComponent} from './components/ordercompelete/ordercompelet
 import {RegisterComponent} from './components/register/register.component'
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './auth.guard'
-
+import { ProductsComponent } from './components/products/products.component'
+import { SearchResultComponent } from './components/search-result/search-result.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'products/:cat', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'order/compelete', component: OrdercompeleteComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard]}
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
+  { path: 'search/:keyword', component: SearchResultComponent}
 
 ];
 

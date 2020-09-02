@@ -66,10 +66,7 @@ export class UserComponent implements OnInit {
     )
   }
 
-  logout(){
-    this.userService.logout();
-    this.router.navigate([''])
-  }
+  
 
   orderTotal(order){
     let total = 0;

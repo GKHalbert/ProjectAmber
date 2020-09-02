@@ -3,8 +3,11 @@
     <mat-tab label="Orders">
         <div *ngFor="let o of orders">
         <mdb-card class="mt-md-2 ml-md-2 mr-md-2">
-            <mdb-card-header>ORDER: {{o[0].orderId}}
+            <mdb-card-header>
+                ORDER: {{o[0].orderId}}
                 <span style="float: right">TOTAL: ${{orderTotal(o)}}</span>
+                <span style="float: right; margin-right: 15%;">DETAIL</span>
+                
             </mdb-card-header>
             <mdb-card-body>
               <ul class="list-group list-group-flush">
@@ -25,16 +28,17 @@
                     </li>
                    
                 </ul>
+
+                
             </mdb-card-body>
+
           </mdb-card>
         
         </div>
         
     </mat-tab>
     <mat-tab label="Account">
-        <button mdbBtn (click)="logout()" type="button" color="default" mdbWavesEffect>
-            Logout
-        </button>
+        <app-account></app-account>
     </mat-tab>
   </mat-tab-group>
 </div>

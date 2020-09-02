@@ -1,5 +1,5 @@
 <div class="section" *ngIf="cartData.total > 0">
-    <div class="container mt-md-5">
+    <div class="container mt-md-5" style="min-height: 100vh;">
         <div class="row">
             <div  class="col-md-7">
                 <div class="billing-details">
@@ -7,30 +7,46 @@
                         <h3 class="title">Shipping address</h3>
                       </div>
 
-                      <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="First Name">
+                      <div class="container">
+                        <div class="row">
+                          
+                        
+                        <div class="col-md-4 mt-2 mb-2" *ngFor="let addr of addrs">
+                          <a (click)="selectAddress(addr.id)">
+                            <mdb-card class="view" style ="cursor: pointer;">
+
+                              <div *ngIf="addr.id === selectedAddrId">
+                                <div class="mask flex-center rgba-blue-grey-light">
+                                  
+                                  </div>
+                              </div>
+
+                                <mdb-card-body>
+                                  <mdb-card-title>
+                                    
+                                    <h4>{{addr.fname}} {{addr.lname}}</h4>
+                                  </mdb-card-title>
+                                  <mdb-card-text>
+                                      {{addr.line1}}<br/>
+                                      {{addr.line2}}<br/>
+                                      {{addr.city}}, {{addr.state}}<br/>{{addr.pincode}}<br/>
+                                      {{addr.country}}<br/>
+                                      {{addr.phone}}<br/>
+                                  </mdb-card-text>
+                                  
+                                </mdb-card-body>
+                              </mdb-card>
+                            </a>
+                          </div>
+
+                        <div class="col-md-4 text-center">
+                          <a mdbBtn floating="true" ><mdb-icon (click)="showAddressForm()" class= "mt-5 mb-5"fas icon="plus-circle" size="4x"></mdb-icon></a>
+                      </div>  
+
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Last Name">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Address">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="city" placeholder="City">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="country" placeholder="Country">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Telephone">
-                      </div>
+
+                      
                       
                       <div class="order-notes">
                         <textarea class="input" placeholder="Order Notes"></textarea>

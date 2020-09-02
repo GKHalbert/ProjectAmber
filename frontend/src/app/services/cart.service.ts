@@ -8,6 +8,7 @@ import { CartModelPublic, CartModelServer, OrderConfirmationResponse} from "../m
 import {ProductModelServer} from "../models/product.model";
 import { trigger } from '@angular/animations';
 import { OrderService} from "./order.service"
+import { AddressService } from './address.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class CartService {
 
   constructor(private productService: ProductService,
               private orderService: OrderService,
+              private addressService: AddressService,
               private httpClient: HttpClient,
               private router: Router) { 
 
@@ -205,8 +207,10 @@ export class CartService {
     this.httpClient.post(`${this.serverUrl}orders/payment`, null).subscribe((res: {success: Boolean})=> {
       if (res.success){
         let newOrder = {
-          products: this.cartDataClient.prodData
+          products: this.cartDataClient.prodData,
+          address: this.addressService.getSelectedAddrId()
         }
+        console.log(newOrder);
         this.httpClient.post(`${this.serverUrl}orders/new`, newOrder).toPromise().then((orderRes: OrderConfirmationResponse) => {
          this.orderService.getOrderById(orderRes.order_id).then(prods => {
            console.log(prods)

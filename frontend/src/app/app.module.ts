@@ -25,7 +25,10 @@ import { UserComponent } from './components/user/user.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { ProductsComponent } from './components/products/products.component';
-import { SearchResultComponent } from './components/search-result/search-result.component'
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { AccountComponent } from './components/account/account.component';
+import { AddressComponent } from './components/address/address.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { SearchResultComponent } from './components/search-result/search-result.
     RegisterComponent,
     UserComponent,
     ProductsComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    AccountComponent,
+    AddressComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

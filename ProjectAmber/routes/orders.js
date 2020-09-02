@@ -143,6 +143,7 @@ router.get('/user/:userid', function (req, res) {
     .withFields([
         'o.id as orderId',
         'u.id as userId',
+        'o.address_id as addrId',
         'p.title',
         'p.description as description',
         'p.price',
@@ -176,7 +177,7 @@ router.post('/new', verifyOrderToken, function (req, res) {
     else{
 
         database.table('orders')
-            .insert({user_id: userId})
+            .insert({user_id: userId, address_id: req.body.address})
             .then(newOrderId =>{
                 let productIndex = 0;
                 let lastIndex = products.length - 1;

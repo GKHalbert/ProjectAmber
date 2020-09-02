@@ -14,6 +14,8 @@ export class UserService {
 
   afterLogin: String;
 
+  private loggedId: Number;
+
   register(userData){
     return this.http.post(`${this.serverURL}users/register`, userData);
   }
@@ -25,6 +27,7 @@ export class UserService {
   logout(){
     localStorage.removeItem('token');
     this.afterLogin = null;
+    this.loggedId = null;
   }
 
   loggedIn(){
@@ -37,6 +40,14 @@ export class UserService {
 
   getUserInfo(){
     return this.http.get<userModelRes>(`${this.serverURL}users/user`)
+  }
+
+  setLoggedId(id){
+    this.loggedId = id;
+  }
+
+  getLoggedId(id){
+    return this.loggedId;
   }
 
 

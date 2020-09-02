@@ -1,0 +1,73 @@
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">New Address</h4>
+        <button type="button" style="outline: none;" class="close" (click)="modalRef.hide()" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form #addressForm= "ngForm" [ngFormOptions]="{updateOn: 'change'}" class="text-center">
+        <div class="md-form form-row mb-4">
+            <div class="col">
+                <!-- First name -->
+                <input mdbInput mdbValidate 
+                type="text" name="first" 
+                [(ngModel)]=" address.fname" 
+                id="defaultRegisterFormFirstName" 
+                class="form-control" placeholder="First name" required>
+            </div>
+            <div class="col">
+                <!-- Last name -->
+                <input  mdbInput mdbValidate type="text" 
+                name="last" [(ngModel)]=" address.lname" 
+                id="defaultRegisterFormLastName" class="form-control" 
+                placeholder="Last name" required>
+                
+            </div>
+            </div>
+
+            <!-- Address -->
+            <div class="md-form">
+                <input mdbInput mdbValidate type="text" name="line1" id="line1" 
+                class="form-control mb-4" placeholder="Address Line 1" [(ngModel)]="address.line1"  required >
+
+            <div class="md-form">
+                <input mdbInput mdbValidate type="text" name="line2" id="line2" 
+                class="form-control mb-4" [(ngModel)]="address.line2" placeholder="Address Line 2" >
+                
+
+            </div>
+            <!-- City -->
+            <div class="md-form">
+                <input mdbInput mdbValidate 
+                type="text" name="city" 
+                id="city" class="form-control mb-4" placeholder="City" [(ngModel)]="address.city" required>                
+                
+                
+            </div>
+            <!-- State -->
+            <div class="md-form">
+                <input mdbInput mdbValidate type="text" name="state"id="state" class="form-control" [(ngModel)]="address.state" placeholder="State" required>
+            </div>
+
+            <!-- Country -->
+            <div class="md-form">
+                <input mdbInput mdbValidate type="text" name="country"id="country" class="form-control" [(ngModel)]="address.country" placeholder="Country" required>
+            </div>
+
+            <!-- Postal Code -->
+            <div class="md-form">
+                <input mdbInput mdbValidate type="text" name="pincode"id="pincode" class="form-control" [(ngModel)]="address.pincode" placeholder="Postal Code" required>
+            </div>
+
+            <!-- Phone number -->
+            <div class="md-form">
+            <input mdbInput mdbValidate type="text" name="phone" id="defaultRegisterPhonePassword" class="form-control" [(ngModel)]="address.phone" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock" required>
+            </div>
+        <!-- Default form address -->
+        </div>
+        </form>
+    </div>
+
+    <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn (click)=" submitAddress(addressForm)" color="default" class="waves-light" mdbWavesEffect>Add</button>
+      </div>

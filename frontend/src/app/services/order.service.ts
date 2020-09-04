@@ -20,4 +20,13 @@ export class OrderService {
   getOrderByUser(id){
     return this.http.get<OrderResponseModel[]>(`${this.serverURL}orders/user/${id}`).toPromise();
   }
+
+  orderTotal(order){
+    let total = 0;
+    order.forEach(element => {
+      total += element.price * element.quantity;
+    });
+
+    return total;
+  }
 }

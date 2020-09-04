@@ -1,12 +1,14 @@
-<div class="container mt-5">
+<div class="container mt-5" style="min-height: 100vh;">
 <mat-tab-group>
     <mat-tab label="Orders">
         <div *ngFor="let o of orders">
-        <mdb-card class="mt-md-2 ml-md-2 mr-md-2">
+        <mdb-card class="mt-md-2 ml-md-2 mr-md-2 mb-2">
             <mdb-card-header>
-                ORDER: {{o[0].orderId}}
+                <a href="/order/{{o[0].orderId}}">
+                    ORDER: {{o[0].orderId}}
+                    <mdb-icon fas icon="info-circle" ></mdb-icon>
+                </a>
                 <span style="float: right">TOTAL: ${{orderTotal(o)}}</span>
-                <span style="float: right; margin-right: 15%;">DETAIL</span>
                 
             </mdb-card-header>
             <mdb-card-body>

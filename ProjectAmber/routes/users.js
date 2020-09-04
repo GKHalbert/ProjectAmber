@@ -145,4 +145,18 @@ router.post('/login', async (req, res)=>{
     }
 })
 
+router.patch('/password', verifyToken,async (req, res) => {
+    let username = req.username;
+    let password = await bcrypt.hash(req.body.password, 10);
+
+    database.table('users')
+    .filter({username: username})
+    .update({
+        password:password
+    })
+    .then(successNum => {
+        res.json("Password updated");
+    })
+})
+
 module.exports = router;

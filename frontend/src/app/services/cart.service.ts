@@ -223,7 +223,7 @@ export class CartService {
              }};
              this.clearCart();
              //close spinner
-             this.router.navigate(['/order/compelete'], navExtra);
+             this.router.navigate(['/order-compelete'], navExtra);
 
            }
          })

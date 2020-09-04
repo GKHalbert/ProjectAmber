@@ -5,6 +5,7 @@ import { AddressService } from 'src/app/services/address.service';
 import { AddressModel } from '../../models/address.model'
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { PasswordFormComponent } from "../password-form/password-form.component"
 
 @Component({
   selector: 'app-account',
@@ -26,6 +27,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.addressService.getAddressesByUserId().subscribe(addrs => {
       this.addrs = addrs;
+      console.log(this.addrs)
     })
 
   }
@@ -42,6 +44,10 @@ export class AccountComponent implements OnInit {
   logout(){
     this.userService.logout();
     this.router.navigate([''])
+  }
+
+  showPasswordForm(){
+    this.modalRef = this.modalService.show(PasswordFormComponent);
   }
 
 

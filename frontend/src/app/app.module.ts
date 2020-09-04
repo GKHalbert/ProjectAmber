@@ -28,7 +28,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { AccountComponent } from './components/account/account.component';
 import { AddressComponent } from './components/address/address.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component'
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { PasswordFormComponent } from './components/password-form/password-form.component';
+import { PasswordMatchDirective } from './directives/password-match.directive'
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     SearchResultComponent,
     AccountComponent,
     AddressComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    PasswordFormComponent,
+    PasswordMatchDirective
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,16 @@ var router = express.Router();
 const {database} = require('../config/helpers');
 const { tokenVerifier } = require("../config/helpers")
 
-
+/* GET address by Id */
+router.get('/addrId/:id', function (req, res) {
+    let id = req.params.id;
+    database.table('addresses')
+    .filter({id: id})
+    .get()
+    .then(address =>
+        res.json(address)
+        ).catch(err => console.log(err));
+})
 
 /* GET address by user Id */
 router.get('/userAddr',tokenVerifier, function (req, res) {

@@ -18,6 +18,7 @@ export interface ProductModelServer {
 
   export interface ProductResponseModel {
     id: Number;
+    addrId? : Number;
     title: String;
     description: String;
     price: Number;

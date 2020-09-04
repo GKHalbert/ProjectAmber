@@ -50,6 +50,10 @@ export class UserService {
     return this.loggedId;
   }
 
+  changePassword(newPassword){
+    return this.http.patch(`${this.serverURL}users/password`, {password: newPassword});
+  }
+
 
 }
 

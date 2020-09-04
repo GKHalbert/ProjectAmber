@@ -18,6 +18,10 @@ export class AddressService {
     return this.http.get<AddressModel[]>(`${this.serverURL}address/userAddr`);
   }
 
+  getAddressByAddrId(id){
+    return this.http.get<AddressModel>(`${this.serverURL}address/addrId/` + id);
+  }
+
   AddAddress(address){
      return this.http.post(`${this.serverURL}address/new`, address);
   }

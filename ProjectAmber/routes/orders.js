@@ -102,6 +102,7 @@ router.get('/:orderid', function (req, res) {
     .withFields([
         'o.id',
         'p.title',
+        'o.address_id as addrId',
         'p.description as description',
         'p.price',
         'od.quantity',

@@ -48,6 +48,7 @@ export class CartComponent implements OnInit {
   }
 
   toCheckout(){
+    this.selfModalRef.hide();
     if (this.userService.loggedIn()){
       this.router.navigate(['/checkout'])
     }

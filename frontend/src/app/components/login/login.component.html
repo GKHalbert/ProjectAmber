@@ -1,55 +1,63 @@
 
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-        <button type="button" style="outline: none;" class="close" (click)="modalRef.hide()" data-dismiss="modal" aria-label="Close" >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-       <!-- Default form login -->
-        <form [ngFormOptions]="{updateOn: 'change'}" class="text-center  p-5">
-          <div class="md-form">
-          <!-- Username-->
-          <input mdbInput mdbValidate type="text" [formControl]="loginFormModalUserName" id="defaultLoginFormUserName" class="form-control mb-4" placeholder="Username">
-          <mdb-error
-          *ngIf="loginFormModalUserName.invalid && (loginFormModalUserName.dirty || loginFormModalUserName.touched)">
-          Username required
-          </mdb-error>
-          </div>
-          <!-- Password -->
-          <div class="md-form">
-          <input mdbInput mdbValidate type="password" [formControl]="loginFormModalPassword" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-          <mdb-error
-            *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
-            Password required
-          </mdb-error>
-          </div>
+<!--Header-->
+<div class="modal-header text-center">
+  <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+  <button type="button" style="outline: none;" class="close" (click)="modalRef.hide()" data-dismiss="modal" aria-label="Close" >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!--/.Header-->
 
-          <!-- Sign in button -->
-          <button mdbBtn (click)= "loginUser()" color="info" block="true" class="my-4" type="submit">Sign in</button>
+<!--Modal Body-->
+<div class="modal-body mx-3">
+  <!-- form login -->
+  <form [ngFormOptions]="{updateOn: 'change'}" class="text-center  p-5">
+    <div class="md-form">
+    <!-- Username-->
+      <input mdbInput mdbValidate type="text" [formControl]="loginFormModalUserName" id="defaultLoginFormUserName" class="form-control mb-4" placeholder="Username">
+      <mdb-error
+      *ngIf="loginFormModalUserName.invalid && (loginFormModalUserName.dirty || loginFormModalUserName.touched)">
+        <span *ngIf="loginFormModalUserName.errors?.required">Username required</span>
+        <span *ngIf="loginFormModalUserName.errors.serverErr">{{errMsg}}</span>
+      </mdb-error>
+    </div>
+    <!-- Password -->
+    <div class="md-form">
+      <input mdbInput mdbValidate type="password" [formControl]="loginFormModalPassword" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+      <mdb-error
+        *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+        <span *ngIf="loginFormModalPassword.errors?.required">Password required</span>
+        <span *ngIf="loginFormModalPassword.errors.serverErr">{{errMsg}}</span>
+      </mdb-error>
+    </div>
 
-          <!-- Register -->
-          <p>Not a member?
-            <a href="/register">Register</a>
-          </p>
+    <!-- Sign in button -->
+    <button mdbBtn (click)= "loginUser()" color="info" block="true" class="my-4" type="submit">Sign in</button>
 
-          <!-- Social login -->
-          <p>or sign in with:</p>
+    <!-- Register -->
+    <p>Not a member?
+      <a href="/register">Register</a>
+    </p>
 
-          <a type="button" class="light-blue-text mx-2">
-            <mdb-icon fab icon="facebook"></mdb-icon>
-          </a>
-          <a type="button" class="light-blue-text mx-2">
-            <mdb-icon fab icon="twitter"></mdb-icon>
-          </a>
-          <a type="button" class="light-blue-text mx-2">
-            <mdb-icon fab icon="linkedin"></mdb-icon>
-          </a>
-          <a type="button" class="light-blue-text mx-2">
-            <mdb-icon fab icon="github"></mdb-icon>
-          </a>
-        </form>
-        <!-- Default form login -->
-        </div>
+    <!-- Social login -->
+    <p>or sign in with:</p>
+
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="facebook"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="twitter"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="linkedin"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="github"></mdb-icon>
+    </a>
+  </form>
+  <!-- form login -->
+</div>
+
+<!--Modal Body-->
 
       

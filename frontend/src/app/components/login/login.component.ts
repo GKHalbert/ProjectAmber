@@ -3,7 +3,7 @@ import { MDBModalRef } from 'angular-bootstrap-md';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router'
-import { onErrorResumeNext } from 'rxjs';
+import { onErrorResumeNext, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
 
   validatingForm: FormGroup;
 
+  errMsg;
+
+
   constructor(public modalRef: MDBModalRef,
     private userService: UserService,
     private router: Router) { }
@@ -23,6 +26,24 @@ export class LoginComponent implements OnInit {
       loginFormModalUserName: new FormControl('', Validators.required),
       loginFormModalPassword: new FormControl('', Validators.required)
     });
+
+    console.log(this.validatingForm)
+
+    this.loginFormModalUserName.valueChanges.subscribe(()=>{
+      if(this.errMsg){
+        this.errMsg=null;
+        this.loginFormModalPassword.updateValueAndValidity()
+      };
+    })
+
+    this.loginFormModalPassword.valueChanges.subscribe(()=>{
+      if(this.errMsg){
+        this.errMsg=null;
+        this,this.loginFormModalUserName.updateValueAndValidity();
+      }
+    })
+
+
   }
 
   get loginFormModalUserName() {
@@ -34,6 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
+    console.log(this.validatingForm);
     let password = this.loginFormModalPassword;
     password.markAsTouched();
     let username = this.loginFormModalUserName;
@@ -53,7 +75,10 @@ export class LoginComponent implements OnInit {
           
         },
         err =>{
-          console.log(err);
+          this.errMsg = err.error;
+          this.loginFormModalPassword.setErrors({serverErr:true});
+          this.loginFormModalUserName.setErrors({serverErr:true});
+
         }
       )
     }

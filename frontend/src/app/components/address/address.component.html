@@ -1,73 +1,182 @@
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">New Address</h4>
-        <button type="button" style="outline: none;" class="close" (click)="modalRef.hide()" data-dismiss="modal" aria-label="Close" >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <form #addressForm= "ngForm" [ngFormOptions]="{updateOn: 'change'}" class="text-center">
+<!-- Title -->
+<div class="modal-header text-center">
+    <h4 class="modal-title w-100 font-weight-bold">New Address</h4>
+    <button type="button" style="outline: none;" class="close" (click)="modalRef.hide()" data-dismiss="modal" aria-label="Close" >
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<!-- /.Title -->
+
+<!-- Form Body -->
+<div class="modal-body mx-3">
+    <form #addressForm= "ngForm" [ngFormOptions]="{updateOn: 'change'}" class="text-center">
         <div class="md-form form-row mb-4">
             <div class="col">
                 <!-- First name -->
-                <input mdbInput mdbValidate 
-                type="text" name="first" 
+                <input 
+                #fname="ngModel"
+                mdbInput mdbValidate 
+                type="text" 
+                name="first" 
                 [(ngModel)]=" address.fname" 
                 id="defaultRegisterFormFirstName" 
-                class="form-control" placeholder="First name" required>
+                class="form-control" 
+                placeholder="First name" required>
+
+                <mdb-error *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+                    First name required
+                </mdb-error>           
+
             </div>
+
             <div class="col">
                 <!-- Last name -->
-                <input  mdbInput mdbValidate type="text" 
-                name="last" [(ngModel)]=" address.lname" 
-                id="defaultRegisterFormLastName" class="form-control" 
+                <input 
+                #lname="ngModel"
+                mdbInput mdbValidate 
+                type="text" 
+                name="last" 
+                [(ngModel)]=" address.lname" 
+                id="defaultRegisterFormLastName" 
+                class="form-control" 
                 placeholder="Last name" required>
+
+                <mdb-error *ngIf="lname.invalid && (lname.dirty || lname.touched)">
+                    Last name required
+                </mdb-error>
                 
             </div>
-            </div>
-
-            <!-- Address -->
-            <div class="md-form">
-                <input mdbInput mdbValidate type="text" name="line1" id="line1" 
-                class="form-control mb-4" placeholder="Address Line 1" [(ngModel)]="address.line1"  required >
-
-            <div class="md-form">
-                <input mdbInput mdbValidate type="text" name="line2" id="line2" 
-                class="form-control mb-4" [(ngModel)]="address.line2" placeholder="Address Line 2" >
-                
-
-            </div>
-            <!-- City -->
-            <div class="md-form">
-                <input mdbInput mdbValidate 
-                type="text" name="city" 
-                id="city" class="form-control mb-4" placeholder="City" [(ngModel)]="address.city" required>                
-                
-                
-            </div>
-            <!-- State -->
-            <div class="md-form">
-                <input mdbInput mdbValidate type="text" name="state"id="state" class="form-control" [(ngModel)]="address.state" placeholder="State" required>
-            </div>
-
-            <!-- Country -->
-            <div class="md-form">
-                <input mdbInput mdbValidate type="text" name="country"id="country" class="form-control" [(ngModel)]="address.country" placeholder="Country" required>
-            </div>
-
-            <!-- Postal Code -->
-            <div class="md-form">
-                <input mdbInput mdbValidate type="text" name="pincode"id="pincode" class="form-control" [(ngModel)]="address.pincode" placeholder="Postal Code" required>
-            </div>
-
-            <!-- Phone number -->
-            <div class="md-form">
-            <input mdbInput mdbValidate type="text" name="phone" id="defaultRegisterPhonePassword" class="form-control" [(ngModel)]="address.phone" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock" required>
-            </div>
-        <!-- Default form address -->
         </div>
-        </form>
-    </div>
 
-    <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn (click)=" submitAddress(addressForm)" color="default" class="waves-light" mdbWavesEffect>Add</button>
-      </div>
+        <!-- Address -->
+        <div class="md-form">
+            <input #line1="ngModel" 
+            mdbInput mdbValidate 
+            type="text" 
+            name="line1" 
+            id="line1" 
+            class="form-control mb-4" 
+            placeholder="Address Line 1" 
+            [(ngModel)]="address.line1" required>
+
+            <mdb-error *ngIf="line1.invalid && (line1.dirty || line1.touched)">
+                Address required
+            </mdb-error>
+        </div>
+
+        <div class="md-form">
+            <input 
+            mdbInput mdbValidate 
+            type="text" 
+            name="line2" 
+            id="line2" 
+            class="form-control mb-4" 
+            [(ngModel)]="address.line2" 
+            placeholder="Address Line 2">
+            
+
+        </div>
+
+
+        <!-- City -->
+        <div class="md-form">
+            <input 
+            #city="ngModel"
+            mdbInput mdbValidate 
+            type="text" 
+            name="city" 
+            id="city" 
+            class="form-control mb-4" 
+            placeholder="City" 
+            [(ngModel)]="address.city" required>
+            
+            <mdb-error *ngIf="city.invalid && (city.dirty || city.touched)">
+                City required
+            </mdb-error>            
+            
+        </div>
+
+        <!-- State -->
+        <div class="md-form">
+            <input
+            #state="ngModel"
+            mdbInput mdbValidate 
+            type="text" 
+            name="state"
+            id="state" 
+            class="form-control" 
+            [(ngModel)]="address.state" 
+            placeholder="State" required>
+
+            <mdb-error *ngIf="state.invalid && (state.dirty || state.touched)">
+                State required
+            </mdb-error>
+        </div>
+
+        <!-- Country -->
+        <div class="md-form">
+            <input 
+            #country="ngModel"
+            mdbInput mdbValidate 
+            type="text" 
+            name="country"
+            id="country" 
+            class="form-control" 
+            [(ngModel)]="address.country" 
+            placeholder="Country" required>
+
+            <mdb-error *ngIf="country.invalid && (country.dirty || country.touched)">
+                Country required
+            </mdb-error>           
+
+
+        </div>
+
+        <!-- Postal Code -->
+        <div class="md-form">
+            <input
+            #pincode="ngModel"
+            mdbInput mdbValidate 
+            type="text" 
+            name="pincode"
+            id="pincode" 
+            class="form-control" 
+            [(ngModel)]="address.pincode" 
+            placeholder="Postal Code" required>
+
+            <mdb-error *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)">
+                Postal code required
+            </mdb-error>
+
+
+        </div>
+
+        <!-- Phone number -->
+        <div class="md-form">
+            <input 
+            #phone="ngModel"
+            mdbInput mdbValidate 
+            type="text" 
+            name="phone" 
+            id="defaultRegisterPhonePassword" 
+            class="form-control" 
+            [(ngModel)]="address.phone" 
+            placeholder="Phone number" 
+            aria-describedby="defaultRegisterFormPhoneHelpBlock" required>
+
+            <mdb-error *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)">
+                Phone number required
+            </mdb-error>
+
+        </div>
+        
+    <!-- Default form address -->
+    </form>
+</div>
+
+<!-- /.Form Body -->
+
+<div class="modal-footer d-flex justify-content-center">
+    <button mdbBtn (click)=" submitAddress(addressForm)" color="default" class="waves-light" mdbWavesEffect>Add</button>
+    </div>

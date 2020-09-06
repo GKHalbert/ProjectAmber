@@ -15,7 +15,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { CommonModule} from "@angular/common";
-import { ToplevelComponent } from './components/toplevel/toplevel.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { OrdercompeleteComponent } from './components/ordercompelete/ordercompelete.component';
@@ -41,7 +40,6 @@ import { PasswordMatchDirective } from './directives/password-match.directive'
     CheckoutComponent,
     HomeComponent,
     ProductComponent,
-    ToplevelComponent,
     SidemenuComponent,
     OrdercompeleteComponent,
     LoginComponent,

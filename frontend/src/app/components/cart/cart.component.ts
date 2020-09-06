@@ -21,7 +21,8 @@ export class CartComponent implements OnInit {
 
   modalRef: MDBModalRef;
 
-  constructor(private cartService: CartService,
+  constructor(public selfModalRef: MDBModalRef,
+              private cartService: CartService,
               private userService: UserService,
               private modalService: MDBModalService,
               private router: Router) { 

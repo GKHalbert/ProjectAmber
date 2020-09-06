@@ -3,34 +3,39 @@
         <h3>ADDRESSES:</h3>
     </div>
     <div class="row">
-        <div class="col-md-4 mt-2 mb-2" *ngFor="let addr of addrs">
-            <mdb-card>
-                <mdb-card-body>
-                  <mdb-card-title>
-                    <h4>{{addr.fname}} {{addr.lname}}</h4>
-                  </mdb-card-title>
-                  <mdb-card-text>
-                      {{addr.line1}}<br/>
-                      {{addr.line2}}<br/>
-                      {{addr.city}}, {{addr.state}} {{addr.pincode}}<br/>
-                      {{addr.country}}<br/>
-                      {{addr.phone}}<br/>
-                  </mdb-card-text>
-                  <div class="flex-row">
-                    <a class="card-link"(click)="removeAddress(addr.id)">Remove</a>
-                  </div>
-                </mdb-card-body>
-              </mdb-card>
-        </div>
+      <div class="col-md-4 text-center">
+        <a mdbBtn floating="true" ><mdb-icon (click)="showAddressForm()" class= "mt-5 mb-5 animate__animated animate__slideInUp" fas icon="plus-circle" size="4x"></mdb-icon></a>
+      </div> 
 
-        <div class="col-md-4 text-center">
-            <a mdbBtn floating="true" ><mdb-icon (click)="showAddressForm()" class= "mt-5 mb-5"fas icon="plus-circle" size="4x"></mdb-icon></a>
-        </div> 
+      <div class="col-md-4 mt-2 mb-2" *ngFor="let addr of addrs">
+          <mdb-card class="animate__animated animate__slideInUp">
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h4>{{addr.fname}} {{addr.lname}}</h4>
+                </mdb-card-title>
+                <mdb-card-text>
+                    {{addr.line1}}<br/>
+                    {{addr.line2}}<br/>
+                    {{addr.city}}, {{addr.state}} {{addr.pincode}}<br/>
+                    {{addr.country}}<br/>
+                    {{addr.phone}}<br/>
+                </mdb-card-text>
+                <div class="flex-row">
+                  <a class="card-link"(click)="removeAddress(addr.id)">Remove</a>
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+      </div>
+
+        
     </div>
 
     <hr>
-    <a (click)="logout()"><p><mdb-icon fas icon="sign-out-alt" size="3x"></mdb-icon><span class="aligned-with-icon"> LOGOUT</span></p></a>
-    <a (click)="showPasswordForm()"><p><mdb-icon fas icon="lock" size="3x"></mdb-icon><span class="aligned-with-icon"> CHANGE PASSWORD</span></p></a>
+
+    <div class="animate__animated animate__slideInLeft">
+      <a (click)="logout()"><p><mdb-icon fas icon="sign-out-alt" size="3x"></mdb-icon><span class="aligned-with-icon"> LOGOUT</span></p></a>
+      <a (click)="showPasswordForm()"><p><mdb-icon fas icon="lock" size="3x"></mdb-icon><span class="aligned-with-icon"> CHANGE PASSWORD</span></p></a>
+      </div>
 </div>
 
 

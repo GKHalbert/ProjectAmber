@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Testability } from '@angular/core';
 import { CartService} from '../../services/cart.service'
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
-import { LoginComponent} from '../login/login.component'
+import { LoginComponent} from '../login/login.component';
+import { CartComponent } from '../cart/cart.component'
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 
 @Component({
   selector: 'app-header',
@@ -38,13 +40,18 @@ export class HeaderComponent implements OnInit {
     
   }
 
-  openCartCallBack(){
-    
-    this.openCart.emit(true);
+  openCartModal(){
+    this.modalRef = this.modalService.show(CartComponent, {
+      class: 'modal-full-height modal-right',
+      containerClass: "modal fade right"
+    });
   }
 
-  openMenuCallBack(){
-    this.openMenu.emit(true);
+  openMenuModal(){
+    this.modalRef = this.modalService.show(SidemenuComponent, {
+      class: 'modal-dialog modal-full-height modal-left',
+      containerClass: "modal fade left"
+    });
   }
 
   search(){

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { MDBModalRef } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-sidemenu',
@@ -10,7 +11,8 @@ export class SidemenuComponent implements OnInit {
 
   @Output ('menuClosed') closeMenu = new EventEmitter<boolean>();
 
-  constructor(private productService: ProductService) { }
+  constructor(public modalRef: MDBModalRef,
+              private productService: ProductService) { }
 
   categories;
 

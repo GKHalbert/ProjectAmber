@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   title  = "NEW ARRIVALS";
   products: any[] = [];
-  limit= 12;
+  limit = 12;
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {

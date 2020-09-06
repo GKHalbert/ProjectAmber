@@ -1,8 +1,9 @@
 <!--Side Menu content-->
-<div>
-    <mdb-icon fas icon="times" size="lg" (click)="closeMenuCallBack()"></mdb-icon>
-    
-        <div ng-sidebar-content class="mr-md-3 ml-md-3">
+<div class="modal-body">
+    <div class="menu-close">
+        <a><mdb-icon style="float: left;" class="close" fas icon="times" size="lg" (click)="modalRef.hide()" mdbWavesEffect></mdb-icon></a>
+    </div>
+        <div class="mr-md-3 ml-md-3 mt-4">
 
             <h4 class="text-muted mt-5">
                 <a href="/" class="text-reset">HOME</a>

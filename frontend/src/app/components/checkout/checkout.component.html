@@ -1,90 +1,103 @@
-<div class="section" *ngIf="cartData.total > 0">
-    <div class="container mt-md-5" style="min-height: 100vh;">
-        <div class="row">
-            <div  class="col-md-7">
-                <div class="billing-details">
-                    <div class="section-title">
-                        <h3 class="title">Shipping address</h3>
+<!--Checkout Pange-->
+<div class="section" *ngIf="cartData.total > 0">  
+  <div class="container mt-md-5" style="min-height: 100vh;">
+    <div class="row">
+      <!--Address Selection-->
+      <div  class="col-md-7">
+
+        <div class="billing-details">
+          <div class="section-title animate__animated animate__fadeIn">
+              <h3 class="title">Shipping address</h3>
+          </div>
+
+          <div class="container">
+            <div class="row">
+
+              <div class="col-md-4 text-center animate__animated animate__fadeIn">
+                <a mdbBtn mdbWavesEffect floating="true" size="sm"><mdb-icon (click)="showAddressForm()" class= "mt-5 mb-5 text-primary" fas icon="plus-circle" size="3x"></mdb-icon></a>
+              </div>         
+              
+              <div class="col-md-4 mt-2 mb-2 animate__animated animate__fadeIn" *ngFor="let addr of addrs">
+                <a (click)="selectAddress(addr.id)">
+                  <mdb-card class="view" style ="cursor: pointer;">
+
+                    <div *ngIf="addr.id === selectedAddrId">
+                      <div class="mask flex-center rgba-blue-grey-light">                        
                       </div>
-
-                      <div class="container">
-                        <div class="row">
-                          
-                        
-                        <div class="col-md-4 mt-2 mb-2" *ngFor="let addr of addrs">
-                          <a (click)="selectAddress(addr.id)">
-                            <mdb-card class="view" style ="cursor: pointer;">
-
-                              <div *ngIf="addr.id === selectedAddrId">
-                                <div class="mask flex-center rgba-blue-grey-light">
-                                  
-                                  </div>
-                              </div>
-
-                                <mdb-card-body>
-                                  <mdb-card-title>
-                                    
-                                    <h4>{{addr.fname}} {{addr.lname}}</h4>
-                                  </mdb-card-title>
-                                  <mdb-card-text>
-                                      {{addr.line1}}<br/>
-                                      {{addr.line2}}<br/>
-                                      {{addr.city}}, {{addr.state}}<br/>{{addr.pincode}}<br/>
-                                      {{addr.country}}<br/>
-                                      {{addr.phone}}<br/>
-                                  </mdb-card-text>
-                                  
-                                </mdb-card-body>
-                              </mdb-card>
-                            </a>
-                          </div>
-
-                        <div class="col-md-4 text-center">
-                          <a mdbBtn floating="true" ><mdb-icon (click)="showAddressForm()" class= "mt-5 mb-5"fas icon="plus-circle" size="4x"></mdb-icon></a>
-                      </div>  
-
-                        </div>
-                      </div>
-
-                      
-                      
-                      <div class="order-notes">
-                        <textarea class="input" placeholder="Order Notes"></textarea>
-                      </div>
-                </div>
-            </div>
-            <div class="col-md-5 order-details">
-                <div class="section-title text-center">
-                    <h3 class="title">Your Order</h3>
-                  </div>
-
-                <div class="order-summary">
-                    <div class="order-col">
-                        <div><strong>PRODUCT</strong></div>
-                        <div><strong>SUBTOTAL</strong></div>
-                      </div>
-                    
-                    <div class="order-products">
-                        <div class="order-col" *ngFor="let c of cartData.data">
-                            <div>{{c.numInCart}}x {{c.product.name}}</div>
-                            <div>${{(c.product.price*c.numInCart).toFixed(2)}}</div>   
-                        </div>
-
                     </div>
 
-                    <div class="order-col">
-                        <div>Shipping</div>
-                        <div><strong>FREE</strong></div>
-                      </div>
+                    <mdb-card-body>
+                      <mdb-card-title>                        
+                        <h4>{{addr.fname}} {{addr.lname}}</h4>
+                      </mdb-card-title>
 
-                      <div class="order-col dropdown-divider">
-                        <div><strong>TOTAL</strong></div>
-                        <div><strong class="order-total">{{cartData.total.toFixed(2)}}</strong></div>
-                      </div>
+                      <mdb-card-text>
+                          {{addr.line1}}<br/>
+                          {{addr.line2}}<br/>
+                          {{addr.city}}, {{addr.state}}<br/>{{addr.pincode}}<br/>
+                          {{addr.country}}<br/>
+                          {{addr.phone}}<br/>
+                      </mdb-card-text>
+                      
+                    </mdb-card-body>
+                  </mdb-card>
+                </a>
+              </div>  
 
-                      <button mdbBtn (click)="placeOrder()" type="button" color="default" rounded="true" style="width: 100%;" mdbWavesEffect>PLACE ORDER</button>
-                </div>
             </div>
+          </div>
+
+              
+              
+          <div class="order-notes animate__animated animate__fadeIn">
+            <textarea class="input" placeholder="Order Notes"></textarea>
+          </div>
         </div>
+      </div>
+        <!--/.Address Selection-->
+
+      <!--Order Summary-->
+      <div class="col-md-5 order-details animate__animated animate__slideInUp">
+        <div class="section-title text-center">
+          <h3 class="title">Your Order</h3>
         </div>
+
+        <div class="order-summary">
+          <div class="order-col">
+            <div><strong>PRODUCT</strong></div>
+            <div><strong>SUBTOTAL</strong></div>
+          </div>
+            
+          <div class="order-products">
+            <div class="order-col" *ngFor="let c of cartData.data">
+              <div>{{c.numInCart}}x {{c.product.name}}</div>
+              <div>${{(c.product.price*c.numInCart).toFixed(2)}}</div>   
+            </div>
+          </div>
+
+          <div class="order-col">
+            <div>Shipping</div>
+            <div><strong>FREE</strong></div>
+          </div>
+
+          <div class="order-col dropdown-divider">
+            <div><strong>TOTAL</strong></div>
+            <div><strong class="order-total">{{cartData.total.toFixed(2)}}</strong></div>
+          </div>
+
+          <button mdbBtn (click)="placeOrder()" type="button" color="default" rounded="true" style="width: 100%;" mdbWavesEffect>PLACE ORDER</button>
+        
+        </div>
+      </div>
+      <!--/.Order Summary-->
+    </div>
+    <ngx-spinner 
+      bdColor="rgba(62, 69, 81, 0.2)"
+      color="#33b5e5"
+      type = "ball-clip-rotate-multiple">
+      <h4 class="spinner-text-order">Placing your order...</h4>
+    </ngx-spinner>
+  </div>
+
 </div>
+<!--/.Checkout Page-->

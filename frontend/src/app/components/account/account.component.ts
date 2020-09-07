@@ -5,12 +5,13 @@ import { AddressService } from 'src/app/services/address.service';
 import { AddressModel } from '../../models/address.model'
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { PasswordFormComponent } from "../password-form/password-form.component"
+import { PasswordFormComponent } from "../password-form/password-form.component";
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
 

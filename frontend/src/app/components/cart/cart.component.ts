@@ -5,13 +5,25 @@ import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
-import { LoginComponent} from '../login/login.component'
+import { LoginComponent} from '../login/login.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('1s ease-out', style({ opacity: '1' })),
+      ]),
+      transition(':leave', [
+        style({ opacity: '1' }),
+        animate('1s ease-out', style({ opacity: '0' })),
+      ]),
+    ]),]
 })
 export class CartComponent implements OnInit {
 

@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
       }
 
       else{
-        this.productService.getProductByCat(params.cat, 10).subscribe(prods => {
+        this.productService.getProductByCat(params.cat).subscribe(prods => {
           this.title = params.cat;
           this.products = prods.products;
         })

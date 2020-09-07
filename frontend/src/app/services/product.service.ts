@@ -13,25 +13,37 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(limitInput=10): Observable<serverResponse> {
-    return this.http.get<serverResponse>(this.url + 'products', {
+  getAllProducts(limitInput?): Observable<serverResponse> {
+    if(limitInput){
+      return this.http.get<serverResponse>(this.url + 'products', {
       params: {
         limit: limitInput.toString()
       }
-    })
+      });
+    }
+    else
+    {
+      return this.http.get<serverResponse>(this.url + 'products')
+    }
   }
 
   getProductById(id: Number): Observable<ProductModelServer> {
     return this.http.get<ProductModelServer>(this.url + 'products/' + id);
   }
 
-  getProductByCat(cat: String, limitInput=10): Observable<serverResponse> {
-    return this.http.get<serverResponse>(this.url + 'products/category/' + cat,
+  getProductByCat(cat: String, limitInput?): Observable<serverResponse> {
+    if(limitInput){
+      return this.http.get<serverResponse>(this.url + 'products/category/' + cat,
     {
       params: {
         limit: limitInput.toString()
       }
     });
+    }
+
+    else{
+      return this.http.get<serverResponse>(this.url + 'products/category/' + cat);
+    }
   }
 
   getCategories(){

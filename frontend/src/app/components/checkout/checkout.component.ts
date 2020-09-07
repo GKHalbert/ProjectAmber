@@ -4,6 +4,7 @@ import { CartModelServer } from 'src/app/models/cart.model';
 import { AddressService } from 'src/app/services/address.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { AddressComponent } from '../address/address.component';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-checkout',
@@ -15,11 +16,12 @@ export class CheckoutComponent implements OnInit {
   cartData: CartModelServer;
   modalRef: MDBModalRef;
   addrs = [];
-  selectedAddrId = 31;
+  selectedAddrId;
 
   constructor(private modalService: MDBModalService,
               private cartService: CartService,
-              private addressService: AddressService) { }
+              private addressService: AddressService,
+              private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.cartService.cartDataObs$.subscribe(data => 
@@ -28,10 +30,14 @@ export class CheckoutComponent implements OnInit {
 
     this.addressService.getAddressesByUserId().subscribe(addrs => {
         this.addrs = addrs;
-      })
+        if(addrs){
+          this.selectedAddrId = addrs[0].id;
+        }
+    })
   }
 
   placeOrder(){
+    this.spinner.show();
     this.cartService.CheckoutFromCart();
   }
 

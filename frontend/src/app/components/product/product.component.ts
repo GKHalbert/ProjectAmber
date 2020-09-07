@@ -23,7 +23,8 @@ export class ProductComponent implements OnInit {
     { name: "5", value: 5 }
   ]
 
-  constructor(private productService: ProductService,
+  constructor(
+    private productService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService) { }
 

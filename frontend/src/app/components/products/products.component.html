@@ -1,26 +1,29 @@
 <div class="container-fluid">
-    <h3 class="product-title mt-md-5 mt-sm-3 mb-md-5">{{title}}</h3>
-    <hr>
+  
+	<h3 class="product-title mt-md-5 mt-sm-3 mb-md-5">{{title}}</h3>
+  	<hr>
 
-    <div class="row">
-        <div class="col-md-3 my-5" *ngFor="let product of products">
-          <mdb-card>
-            <div class="view overlay waves-light" mdbWavesEffect>
-              <mdb-card-img [src]="product.image"></mdb-card-img>
-              <a href="/product/{{product.id}}">
-                <div class="mask"></div>
-              </a>
-              </div>
-            
-            <mdb-card-body>
-              <mdb-card-title>
-                <h4>{{product.name}}</h4>
-                </mdb-card-title>
-                <hr>
-              <mdb-card-text>${{product.price}}</mdb-card-text>
-              </mdb-card-body>
-          </mdb-card>
-    
-        </div>
-      </div>
+	<div class="row">
+		<div class="col-md-3 my-5 wow animate__fadeIn" *ngFor="let product of products">
+			<mdb-card>
+				<div class="view overlay waves-light" mdbWavesEffect>
+				<mdb-card-img [src]="product.image"></mdb-card-img>
+				<a href="/product/{{product.id}}">
+					<div class="mask"></div>
+				</a>
+				</div>
+				
+				<mdb-card-body>
+				<mdb-card-title>
+					<h4>{{product.name}}</h4>
+					</mdb-card-title>
+					<hr>
+				<mdb-card-text>${{product.price}}</mdb-card-text>
+				</mdb-card-body>
+
+			</mdb-card>
+
+		</div>
+	</div>
+
 </div>

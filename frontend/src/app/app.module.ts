@@ -29,7 +29,8 @@ import { AccountComponent } from './components/account/account.component';
 import { AddressComponent } from './components/address/address.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { PasswordFormComponent } from './components/password-form/password-form.component';
-import { PasswordMatchDirective } from './directives/password-match.directive'
+import { PasswordMatchDirective } from './directives/password-match.directive';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { PasswordMatchDirective } from './directives/password-match.directive'
     CommonModule,
     FormsModule,
     MatTabsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   entryComponents:[LoginComponent],
   providers: [

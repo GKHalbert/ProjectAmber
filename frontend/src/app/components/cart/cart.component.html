@@ -12,14 +12,14 @@
 <!--Cart Body-->
 <div class="modal-body">
   <!--Cart Empty-->
-  <div *ngIf="cartData.data[0].numInCart === 0;" class="text-center my-5">
+  <div *ngIf="cartData.data[0].numInCart === 0;" class="text-center my-5 animate__animated animate__fadeIn">
     <h4>YOUR CART IS EMPTY</h4>
     </div>
   <!--/.Cart Empty-->
 
   <div *ngIf="cartData.data[0].numInCart !== 0" class="container-fluid">
     <!--Cart Content-->
-    <div *ngFor = "let p of cartData.data; let i=index">
+    <div [@fadeIn] *ngFor = "let p of cartData.data; let i=index">
       <div class="row">
         <div class="col-md-4">
           <img [src]="p.product?.image" alt="thumbnail" class="img-thumbnail">
@@ -30,8 +30,14 @@
             
             <div class="md-form input-group mb-3">
               <div class="input-group-prepend">
-                <button mdbBtn  (click)="ChangeQuantity(i, false)"
-                color="primary" size="md" class="m-0 px-3 py-2" type="button" id="button-addon1"
+                <button mdbBtn 
+                  (click)="ChangeQuantity(i, false)"
+                  color="cyan"
+                
+                  size="md" 
+                  class="m-0 px-3 py-2" 
+                  type="button" 
+                  id="button-addon1"
                   mdbWavesEffect>-</button>
               </div>
 
@@ -39,11 +45,17 @@
                 aria-describedby="button-addon1">
 
                 <div class="input-group-append">
-                  <button mdbBtn (click)="ChangeQuantity(i, true)" color="primary" size="md" class="m-0 px-3 py-2" type="button" id="button-addon1"
+                  <button 
+                    mdbBtn (click)="ChangeQuantity(i, true)" 
+                    color="cyan"
+                    
+                    size="md" class="m-0 px-3 py-2" 
+                    type="button" 
+                    id="button-addon1"
                     mdbWavesEffect>+</button>
                 </div>
 
-                <a (click)="RemoveFromCart(i)"><span class="input-group-text md-addon ml-md-3" id="material-addon2">Remove</span></a>  
+                <a (click)="RemoveFromCart(i)"><span class="input-group-text md-addon ml-md-3 ml-sm-5" style="float:right;" id="material-addon2">Remove</span></a>  
           </div>
           
         
@@ -60,6 +72,13 @@
 </div>
 
 <div *ngIf="cartData.data[0].numInCart !== 0" class="modal-footer justify-content-center">
-  <button mdbBtn (click)="toCheckout()" id="" type="button" color="default" mdbWavesEffect>Checkout ${{cartData.total}}</button>
+  <button 
+    mdbBtn (click)="toCheckout()"
+    class="animate__animated animate__slideInUp" 
+    type="button" 
+    color="default" 
+    mdbWavesEffect>
+    Checkout ${{cartData.total}}
+  </button>
 </div>
 

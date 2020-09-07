@@ -3,25 +3,27 @@
     <div class="menu-close">
         <a><mdb-icon style="float: left;" class="close" fas icon="times" size="lg" (click)="modalRef.hide()" mdbWavesEffect></mdb-icon></a>
     </div>
-        <div class="mr-md-3 ml-md-3 mt-4">
 
-            <h4 class="text-muted mt-5">
-                <a href="/" class="text-reset">HOME</a>
-            </h4>
-            <hr>
+    <div class="mr-md-3 ml-md-3 mt-4 animate__animated animate__slideInLeft">
 
-            <h4 class="text-muted mt-5">
-                <a href="/products/ALL" class="text-reset">ALL PRODUCTS</a>
-            </h4>
-            <hr>
+        <h4 class="text-muted mt-5">
+            <a href="/" class="text-reset">HOME</a>
+        </h4>
+        <hr>
 
-            <div *ngFor="let c of categories">
-                    <h4 class="text-muted mt-5">
-                    <a href="/products/{{c.title}}" class="text-reset">{{c.title}}</a>
-                    </h4>
-                    <hr>
+        <h4 class="text-muted mt-5">
+            <a href="/products/ALL" class="text-reset">ALL PRODUCTS</a>
+        </h4>
+        <hr>
 
-            </div>
+        <div *ngFor="let c of categories">
+                <h4 class="text-muted mt-5">
+                <a href="/products/{{c.title}}" class="text-reset">{{c.title}}</a>
+                </h4>
+                <hr>
+
         </div>
+    </div>
+
 </div>
 <!--/.Side Menu content-->

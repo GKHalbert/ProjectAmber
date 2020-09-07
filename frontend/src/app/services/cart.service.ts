@@ -9,6 +9,8 @@ import {ProductModelServer} from "../models/product.model";
 import { trigger } from '@angular/animations';
 import { OrderService} from "./order.service"
 import { AddressService } from './address.service';
+import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { CartComponent } from '../components/cart/cart.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +34,10 @@ export class CartService {
   
   cartDataObs$ = new BehaviorSubject<CartModelServer>(this.cartDataServer);
 
+  modalRef: MDBModalRef;
 
-  constructor(private productService: ProductService,
+  constructor(private modalService: MDBModalService,
+              private productService: ProductService,
               private orderService: OrderService,
               private addressService: AddressService,
               private httpClient: HttpClient,
@@ -142,6 +146,11 @@ export class CartService {
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         this.cartDataObs$.next({...this.cartDataServer});
       }
+
+      this.modalRef = this.modalService.show(CartComponent, {
+        class: 'modal-full-height modal-right',
+        containerClass: "modal fade right"
+      });
     })
     
   }

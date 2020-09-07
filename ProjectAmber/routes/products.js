@@ -6,8 +6,8 @@ const {database} = require('../config/helpers');
 /* GET ALL PRODUCTS*/
 
 router.get('/', function (req, res) {
-    let page = (req.query.page != undefined && req.query.page != 0) ? req.query.page : 1; // current page number
-    const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : 10; //limit of items per page
+    let page = (req.query.page != undefined && req.query.page != 0) ? req.query.page : 0; // current page number
+    const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : Number.MAX_SAFE_INTEGER; //limit of items per page
 
     let startNum;
     let endNum;
@@ -100,8 +100,8 @@ router.get('/category/:catName', function (req, res) {
 
     const catName = req.params.catName;
 
-    let page = (req.query.page != undefined && req.query.page != 0) ? req.query.page : 1; // current page number
-    const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : 10; //limit of items per page
+    let page = (req.query.page != undefined && req.query.page != 0) ? req.query.page : 0; // current page number
+    const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : Number.MAX_SAFE_INTEGER; //limit of items per page
 
     let startNum;
     let endNum;

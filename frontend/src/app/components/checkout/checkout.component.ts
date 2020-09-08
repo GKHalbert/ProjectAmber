@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit {
         this.addrs = addrs;
         if(addrs){
           this.selectedAddrId = addrs[0].id;
+          this.addressService.setSelectedAddrId(this.selectedAddrId);
         }
     })
   }

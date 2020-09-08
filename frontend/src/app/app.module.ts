@@ -31,6 +31,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { PasswordFormComponent } from './components/password-form/password-form.component';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PasswordNotificationComponent } from './components/password-notification/password-notification.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     AddressComponent,
     OrderDetailComponent,
     PasswordFormComponent,
-    PasswordMatchDirective
+    PasswordMatchDirective,
+    PasswordNotificationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
-<div class="container" style="min-height: 100vh;">
-    <h4>ORDER DETAIL</h4>
+<div class="container mt-5" style="min-height: 100vh;">
+    <h4 class="custom-title">ORDER DETAIL</h4>
     <hr>
     <ul class="list-group list-group-flush">
         <li *ngFor="let item of orderInfo" class="list-group-item">
-            <div class="row">
+            <div class="row wow animate__slideInRight">
                 <div class="col-md-4">
                     <img [src]="item.image" alt="thumbnail" class="img-thumbnail"
                     style="width: 200px; height: auto;"
@@ -11,9 +11,9 @@
                 </div>
 
                 <div class="col-md-8">
-                    <h5>{{item.title}}</h5>
-                    <p>$ {{item.price}} &times; {{item.quantity}}</p>
-                    <p> Subtotal: {{item.price * item.quantity}}</p>
+                    <h5 class="custom-title">{{item.title}}</h5>
+                    <p class="text-muted">$ {{item.price}} &times; {{item.quantity}}</p>
+                    <p class="text-muted"> Subtotal: ${{item.price * item.quantity}}</p>
                 </div>
 
             </div>
@@ -23,9 +23,9 @@
        
     </ul>
 
-    <div class="row">
+    <div class="row wow animate__slideInUp">
         <div class="col-md-6">
-            <h5>SHIP TO</h5>
+            <h5 class="custom-title">SHIP TO</h5>
             <p>
                 {{shippingAddr?.fname}} {{shippingAddr?.lname}}<br>
                 {{shippingAddr?.line1}}<br>
@@ -41,7 +41,7 @@
         </div>
 
         <div  class="col-md-6">
-            Total: {{orderTotal(orderInfo)}}
+            <h5 class="custom-title">Total: ${{orderTotal(orderInfo)}}</h5>
         </div>
     </div>
 </div>

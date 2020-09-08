@@ -2,7 +2,7 @@
 <mat-tab-group>
     <mat-tab label="Orders">
         <div *ngFor="let o of orders">
-        <mdb-card class="mt-md-2 ml-md-2 mr-md-2 mb-2 wow animate__slideInLeft">
+        <mdb-card class="mt-md-2 ml-md-2 mr-md-2 mb-4 wow animate__slideInLeft">
             <mdb-card-header>
                 <a href="/order/{{o[0].orderId}}">
                     ORDER: {{o[0].orderId}}

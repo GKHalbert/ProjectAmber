@@ -2,17 +2,26 @@
 <div class="animate__animated animate__fadeIn">
 	<mdb-carousel [animation]="'slide'">
 		<mdb-carousel-item>
-			<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
-			<div class="carousel-caption">
-				<button mdbBtn type="button" color="primary" mdbWavesEffect>Shop Now</button>
-			</div>
+      <a href="/product/1" class="w-100">
+        <img class="d-block w-100 thumbnail-img" src="https://vgtimes.ru//uploads/posts/2019-03/valve-nakonec-to-pokazala-svoy-vr-shlem-po-sluham-pri-pokupke-igrokam-budut-davat-kakuyu-to-igru-56363.jpg" alt="First slide">
+      </a>
 		</mdb-carousel-item>
 		<mdb-carousel-item>
-			<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
-		</mdb-carousel-item>
+      <a href="/product/3" class="w-100">
+			  <img class="d-block w-100 thumbnail-img" src="https://vgtimes.ru//uploads/posts/2020-08/v-set-slili-ceny-videokart-nvidia-rtx-3000.-samaya-moschnaya-stoit-dorozhe-chem-2080-ti-na-starte-69857.jpg" alt="Second slide">
+      </a>
+      </mdb-carousel-item>
 		<mdb-carousel-item>
-			<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
-		</mdb-carousel-item>
+      <a href="/product/6" class="w-100">
+			  <img class="d-block w-100 thumbnail-img" src="https://vgtimes.ru//uploads/posts/2019-10/asus-rog-pokazala-svoi-moschnye-noutbuki-i-druguyu-tehniku-na-igromire-2019-61108.jpg" alt="Third slide">
+      </a>
+      </mdb-carousel-item>
+    
+    <mdb-carousel-item>
+      <a href="/product/16" class="w-100">
+			  <img class="d-block w-100 thumbnail-img" src="https://thegadgetflow.com/wp-content/uploads/2019/11/20-Next-level-gifts-for-the-gamer-in-your-life.jpg"  alt="Third slide">
+      </a>
+    </mdb-carousel-item>
 	</mdb-carousel>
 </div>
 
@@ -32,7 +41,7 @@
     *ngFor="let product of products">
       <mdb-card>
         <div class="view overlay waves-light" mdbWavesEffect>
-          <mdb-card-img [src]="product.image"></mdb-card-img>
+          <mdb-card-img class="product-img" [src]="product.image"></mdb-card-img>
           <a href="/product/{{product.id}}">
             <div class="mask"></div>
           </a>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService} from '../../services/product.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import {CartComponent} from "../cart/cart.component";
 
 @Component({
   selector: 'app-product',
@@ -14,6 +16,7 @@ export class ProductComponent implements OnInit {
   id: Number;
   product;
   thumbimages: any[] = [];
+  modalRef: MDBModalRef;
 
   options = [
     { name: "1", value: 1 },
@@ -24,6 +27,7 @@ export class ProductComponent implements OnInit {
   ]
 
   constructor(
+    private modalService: MDBModalService,
     private productService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService) { }
@@ -42,7 +46,21 @@ export class ProductComponent implements OnInit {
   }
 
   AddToCart(){
-   this.cartService.AddProductToCart(this.id, this.selectedOption);    
+   this.cartService.AddProductToCart(this.id, this.selectedOption);  
+   this.modalRef = this.modalService.show(CartComponent, {
+    class: 'modal-full-height modal-right',
+    containerClass: "modal fade right"
+  }); 
+  }
+
+  procesDescription(des){
+    if (!des){
+      return ''
+    }
+    else{
+      return des.replace(new RegExp('\n', 'g'), "<br />");
+    }
+
   }
 
 }

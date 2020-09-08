@@ -10,7 +10,6 @@ import { trigger } from '@angular/animations';
 import { OrderService} from "./order.service"
 import { AddressService } from './address.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
-import { CartComponent } from '../components/cart/cart.component';
 
 @Injectable({
   providedIn: 'root'
@@ -147,10 +146,6 @@ export class CartService {
         this.cartDataObs$.next({...this.cartDataServer});
       }
 
-      this.modalRef = this.modalService.show(CartComponent, {
-        class: 'modal-full-height modal-right',
-        containerClass: "modal fade right"
-      });
     })
     
   }

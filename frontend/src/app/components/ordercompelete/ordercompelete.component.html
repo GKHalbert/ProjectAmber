@@ -1,32 +1,32 @@
-<div class="container" style="min-height: 100vh; margin-top: 10%;">
+<div class="container mt-5" style="min-height: 100vh;">
     <div class="row">
         <div class="col-md-12">
-            <div class="text-center">
+            <div class="text-center wow animate__fadeIn">
                 <mdb-icon fas icon="check-circle" class="green-text mt-2" size="4x"></mdb-icon>
-                <h1 class="custome-title">Your order is complete</h1>
-                <h3>Order ID: {{orderId}}</h3>
+                <h1 class="custome-title mt-2">Your order is complete</h1>
+                <h3 class="text-muted">Order ID: {{orderId}}</h3>
                 <hr>
             </div>
 
-            <table mdbTable>
+            <table mdbTable class="wow animate__slideInUp">
                 <thead>
                   <tr>
-                    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                    <th *ngFor="let head of headElements" scope="col" style="font-size:medium;">{{head}} </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr mdbTableCol *ngFor="let p of products">
-                    <td>{{p.title}}</td>
-                    <td>{{p.price}}</td>
-                    <td>{{p.quantity}}</td>
-                    <td>{{(p.quantity * p.price).toFixed(2)}}</td>
+                    <td><p style="font-size:medium">{{p.title}}</p></td>
+                    <td><p style="font-size:medium">${{p.price}}</p></td>
+                    <td><p style="font-size:medium">{{p.quantity}}</p></td>
+                    <td><p style="font-size:medium">${{(p.quantity * p.price).toFixed(2)}}</p></td>
 
                   </tr>
                   <tr mdbTableCol>
-                    <td>Total</td>
+                    <td><p style="font-size:medium">Total</p></td>
                     <td></td>
                     <td></td>
-                    <td>{{cartTotal}}</td>
+                    <td><p style="font-size:medium">${{cartTotal}}</p></td>
                   </tr>
                 </tbody>
               </table>

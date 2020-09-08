@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MDBModalRef } from 'angular-bootstrap-md';
+import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { NgForm, FormGroup, Validators, FormControl} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { PasswordNotificationComponent} from '../password-notification/password-notification.component'
 
 @Component({
   selector: 'app-password-form',
@@ -10,7 +11,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PasswordFormComponent implements OnInit {
 
-  constructor(public modalRef: MDBModalRef,
+  successRef: MDBModalRef;
+
+  constructor(
+              private modalService: MDBModalService,
+              public modalRef: MDBModalRef,
               private userService: UserService) { }
 
   pwdForm: FormGroup;
@@ -39,6 +44,11 @@ export class PasswordFormComponent implements OnInit {
       if (this.pwdForm.valid){
         this.userService.changePassword(this.sndPwd.value).subscribe(res => {
           console.log(res);
+          this.modalRef.hide();
+          this.successRef = this.modalService.show(PasswordNotificationComponent,{
+            class: "modal-notify modal-success"
+          });
+          
         })
       }
       else{

@@ -32,6 +32,7 @@ import { PasswordFormComponent } from './components/password-form/password-form.
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PasswordNotificationComponent } from './components/password-notification/password-notification.component';
+import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PasswordNotificationComponent } from './components/password-notificatio
     OrderDetailComponent,
     PasswordFormComponent,
     PasswordMatchDirective,
-    PasswordNotificationComponent
+    PasswordNotificationComponent,
+    RegisterSuccessComponent
   ],
   imports: [
     BrowserModule,

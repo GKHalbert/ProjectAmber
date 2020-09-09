@@ -93,7 +93,7 @@ export class CartService {
       let price = p.product.price;
 
       total = Number((total+ numInCart.valueOf() * price.valueOf()).toFixed(2));
-      console.log(total)
+      
     })
     this.cartDataServer.total = total;
     this.cartTotal$.next(this.cartDataServer.total);
@@ -214,10 +214,10 @@ export class CartService {
           products: this.cartDataClient.prodData,
           address: this.addressService.getSelectedAddrId()
         }
-        console.log(newOrder);
+        
         this.httpClient.post(`${this.serverUrl}orders/new`, newOrder).toPromise().then((orderRes: OrderConfirmationResponse) => {
          this.orderService.getOrderById(orderRes.order_id).then(prods => {
-           console.log(prods)
+           
            if (orderRes.success){
              let navExtra: NavigationExtras = {state:{
                message: orderRes.message,

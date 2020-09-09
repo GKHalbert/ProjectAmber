@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       loginFormModalPassword: new FormControl('', Validators.required)
     });
 
-    console.log(this.validatingForm)
+    
 
     this.loginFormModalUserName.valueChanges.subscribe(()=>{
       if(this.errMsg){

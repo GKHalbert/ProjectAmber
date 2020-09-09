@@ -19,7 +19,7 @@ export class SidemenuComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getCategories().subscribe(cats => {
       this.categories = cats;
-      console.log(this.categories);
+      
 
     })
   }

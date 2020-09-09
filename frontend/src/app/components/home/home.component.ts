@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAllProducts(this.limit).subscribe(prods =>{
       this.products = prods.products;
-      console.log(this.products)
+      
     }
       )
   }

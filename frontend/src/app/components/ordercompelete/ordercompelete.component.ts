@@ -28,8 +28,7 @@ export class OrdercompeleteComponent implements OnInit {
                 this.orderId = state.orderId;
                 this.products = state.products;
                 this.cartTotal = state.total;
-                console.log(state.products);
-                console.log(this.products);
+                
                }
 
   ngOnInit(): void {

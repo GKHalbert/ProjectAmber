@@ -27,18 +27,18 @@ export class UserComponent implements OnInit {
         this.userInfo = res;
 
         this.orderService.getOrderByUser(this.userInfo.userId).then(orderRecords => {
-          console.log(orderRecords)
+          
           let sameOrder = [];
           let count = 0;
           orderRecords.forEach(orderRecord => {
-            console.log(orderRecord)
+            
             if ( sameOrder.length === 0 || sameOrder[0].orderId === orderRecord.orderId){
               sameOrder.push(orderRecord);
             }
             else{
               this.orders.push(sameOrder);
               sameOrder = [];
-              console.log(sameOrder)
+              
               sameOrder.push(orderRecord);
             }
 
@@ -48,12 +48,10 @@ export class UserComponent implements OnInit {
             count ++;
           });
 
-          console.log(this.orders)
-        })
-       
+          
+        })     
     
-
-        console.log(this.orders);
+        
       },
       err => {
         if (err instanceof HttpErrorResponse){

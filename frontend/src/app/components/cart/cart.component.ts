@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.cartDataObs$.subscribe(data => this.cartData = data);
-    console.log(this.cartData);
+    
   }
 
   ChangeQuantity(index, increase) {

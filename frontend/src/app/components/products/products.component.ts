@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
       if(params.cat.toLowerCase() === 'all'){
         this.productService.getAllProducts().subscribe(prods => {
           this.products = prods.products;
-          console.log(this.products);
+          
         })
       }
 

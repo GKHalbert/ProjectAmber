@@ -25,7 +25,7 @@ export class OrderDetailComponent implements OnInit {
         this.addressService.getAddressByAddrId(orderInfo[0].addrId).subscribe(addr => {
           this.orderInfo = orderInfo;
           this.shippingAddr = addr;
-          console.log(this.shippingAddr);
+          
           
         })
       } )

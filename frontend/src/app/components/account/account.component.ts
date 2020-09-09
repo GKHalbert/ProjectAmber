@@ -28,7 +28,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.addressService.getAddressesByUserId().subscribe(addrs => {
       this.addrs = addrs;
-      console.log(this.addrs)
+      
     })
 
   }

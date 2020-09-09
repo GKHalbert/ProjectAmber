@@ -2,11 +2,11 @@ const Mysqli = require('mysqli');
 const jwt = require('jsonwebtoken');
 
 let conn = new Mysqli({
-    host: 'localhost', 
+    host: 'us-cdbr-east-02.cleardb.com', 
     post: 3306,
-    user: 'Amber',
-    passwd: '114514', 
-    db: 'store_db',
+    user: 'bc99d3c8670bc1',
+    passwd: 'cb27659f', 
+    db: 'heroku_bb589f3667c4161',
     multipleStatements: true
 })
 

@@ -85,8 +85,6 @@ router.post('/register', async (req, res) => {
     let fname = req.body.fname;
     let lname = req.body.lname;
 
-    console.log(username);
-
     database.table('users')
     .filter({username:username})
     .get()

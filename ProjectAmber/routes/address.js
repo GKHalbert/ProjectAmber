@@ -35,8 +35,6 @@ router.post('/new',tokenVerifier, function (req, res) {
         addr.user_id  = req.userId;
     }    
 
-    console.log(addr)
-
     database.table('addresses')
     .insert(addr)
     .then(newDetailId => {

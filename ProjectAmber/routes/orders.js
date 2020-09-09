@@ -168,8 +168,7 @@ router.get('/user/:userid', function (req, res) {
 /*PLACE A NEW ORDER*/
 router.post('/new', verifyOrderToken, function (req, res) {
     let userId = req.userId;
-    console.log(userId)
-    console.log(req.body);
+
     let products = req.body.products;
 
     if (userId === null || userId < 0){

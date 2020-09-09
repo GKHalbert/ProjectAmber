@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    console.log(this.validatingForm);
+    
     let password = this.loginFormModalPassword;
     password.markAsTouched();
     let username = this.loginFormModalUserName;

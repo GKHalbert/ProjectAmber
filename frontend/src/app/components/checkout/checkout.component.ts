@@ -38,13 +38,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder(){
-    this.spinner.show();
-    this.cartService.CheckoutFromCart();
+    if(!this.selectedAddrId){
+      this.showAddressForm()
+    }
+    else{
+      this.spinner.show();
+      this.cartService.CheckoutFromCart();
+    }
+
   }
 
   showAddressForm(){
     this.modalRef = this.modalService.show(AddressComponent);
-    this.modalRef.content.action.subscribe(newAddrs => this.addrs = newAddrs);
+    this.modalRef.content.action.subscribe(newAddrs => {
+      this.addrs = newAddrs;
+      this.selectedAddrId = this.addrs[this.addrs.length - 1].id;
+      this.addressService.setSelectedAddrId(this.selectedAddrId);
+    } 
+      );
   }
 
   selectAddress(id){
